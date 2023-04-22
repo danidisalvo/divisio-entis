@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>{{ data.node.name }}</h1>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Color</mat-label>
+    <input matInput [ngxMatColorPicker]="picker" formControlName="color">
+    <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+    <ngx-mat-color-picker #picker [touchUi]="false"></ngx-mat-color-picker>
+  </mat-form-field>
+  <p></p>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Division</mat-label>
+    <input matInput formControlName="division">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Notes</mat-label>
+    <textarea matInput formControlName="notes"></textarea>
+  </mat-form-field>
+  <p></p>
+  <mat-slide-toggle formControlName="addChild" (change)="toggleValidation()">Add child</mat-slide-toggle>
+  <div *ngIf="hasChild()" formGroupName="child">
+    <p></p>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Color</mat-label>
+      <input matInput [ngxMatColorPicker]="picker" formControlName="color">
+      <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker #picker [touchUi]="false"></ngx-mat-color-picker>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Division</mat-label>
+      <input matInput formControlName="division">
+    </mat-form-field>
+    <p></p>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes"></textarea>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<div *ngIf="!data.readOnly">
+  <p></p>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true">Cancel</button>
+    <button mat-button type="submit" (click)="onSubmit()" [disabled]="!isSavedEnabled()">Save</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,618 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "color": "#008000",
+              "division": "",
+              "name": "Accidens praedicatur de accidente",
+              "notes": "Iustus est musicus (Sententia Metaphysicae, lib. 5 l. 9 n. 2).",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#008000",
+              "division": "",
+              "name": "Accidens praedicatur de subiecto",
+              "notes": "Homo est musicus (Sententia Metaphysicae, lib. 5 l. 9 n. 2).",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#008000",
+              "division": "",
+              "name": "Subiectum praedicatur de accidente",
+              "notes": "Musicus est homo (Sententia Metaphysicae, lib. 5 l. 9 n. 2).",
+              "readOnly": false
+            }
+          ],
+          "color": "#008000",
+          "division": "",
+          "name": "Ens secundum accidens",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "color": "#808000",
+                      "division": "Divisio III",
+                      "name": "Ens perfectum (per decem predicamenta)",
+                      "notes": "",
+                      "readOnly": false
+                    }
+                  ],
+                  "color": "#00ff00",
+                  "division": "",
+                  "name": "Ens extra animam",
+                  "notes": "Primo distinguit ens, quod est extra animam, per decem praedicamenta, quod est ens perfectum.",
+                  "readOnly": false
+                },
+                {
+                  "children": [],
+                  "color": "#00ff00",
+                  "division": "",
+                  "name": "Ens in anima",
+                  "notes": "Ens diminutum\nEt ideo virtus instrumenti inquantum hujusmodi... non est ens completum habens esse fixum in natura, sed quoddam ens incompletum... et hujusmodi entia consueverunt intentiones nominari, et habent aliquid simile cum ente, quod est in anima quod est ens diminutum, ut dicitur in 6 Metaph. (Super Sent., lib. 4 d. 1 q. 1 a. 4 qc. 2 co.).",
+                  "readOnly": false
+                }
+              ],
+              "color": "#00ff00",
+              "division": "",
+              "name": "divisio i",
+              "notes": "Sententia Metaphysicae, lib. 5 l. 9 n. 5",
+              "readOnly": false
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "color": "#00ff00",
+                  "division": "",
+                  "name": "Ens in potentia (ii)",
+                  "notes": "",
+                  "readOnly": false
+                },
+                {
+                  "children": [],
+                  "color": "#00ff00",
+                  "division": "",
+                  "name": "Ens in actu (ii)",
+                  "notes": "",
+                  "readOnly": false
+                }
+              ],
+              "color": "#00ff00",
+              "division": "",
+              "name": "divisio ii",
+              "notes": "Tertio dividit ens per potentiam et actum: et ens sic divisum est communius quam ens perfectum. Nam ens in potentia, est ens secundum quid tantum et imperfectum, ibi, amplius esse significat et ens (Sententia Metaphysicae, lib. 5 l. 9 n. 5).",
+              "readOnly": false
+            }
+          ],
+          "color": "#008000",
+          "division": "",
+          "name": "Ens secundum se",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#008000",
+      "division": "",
+      "name": "Divisio I",
+      "notes": "Hic philosophus distinguit quot modis dicitur ens. Et circa hoc tria facit. Primo distinguit ens in ens per se et per accidens. Secundo distinguit modos entis per accidens, ibi, secundum accidens quidem et cetera. Tertio modos entis per se, ibi, secundum se vero (Sententia Metaphysicae, lib. 5 l. 9 n. 1).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#ff00ff",
+          "division": "",
+          "name": "Verum propositionis",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#ff00ff",
+          "division": "",
+          "name": "Falsum propositionis",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#ff00ff",
+      "division": "Divisio II",
+      "name": "Divisio II",
+      "notes": "Sententia Metaphysicae, lib. 6 l. 2 n. 1",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Substantia",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Quantitas",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Qualitas",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Relatio",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Actio",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Passio",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Quando",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Ubi",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Situs",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Habere",
+          "notes": "ST I, q. 48, a. 2, ad 2",
+          "readOnly": false
+        }
+      ],
+      "color": "#808000",
+      "division": "",
+      "name": "Divisio III",
+      "notes": "Sententia Metaphysicae, lib. 6 l. 2 n. 1",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "In actu simpliciter",
+              "notes": "",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "In actu secundum quid",
+              "notes": "",
+              "readOnly": false
+            }
+          ],
+          "color": "#0000ff",
+          "division": "",
+          "name": "Ens in actu",
+          "notes": "Quidem perfectum",
+          "readOnly": false
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "In potentia simpliciter",
+              "notes": "",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "In potentia secundum quid",
+              "notes": "",
+              "readOnly": false
+            }
+          ],
+          "color": "#0000ff",
+          "division": "",
+          "name": "Ens in potentia",
+          "notes": "Quidem imperfectum",
+          "readOnly": false
+        }
+      ],
+      "color": "#0000ff",
+      "division": "Divisio IV",
+      "name": "Divisio IV",
+      "notes": "Sententia Metaphysicae, lib. 6 l. 2 n. 1. \nEt ex hoc accidit, quod unumquodque praedicamentum per actum et potentiam dividitur. Et sicut in rebus, quae extra animam sunt, dicitur aliquid in actu et aliquid in potentia, ita in actibus animae et privationibus, quae sunt res rationis tantum (Sententia Metaphysicae, lib. 5 l. 9 n. 13).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#00ffff",
+          "division": "",
+          "name": "Ens per se subsistens",
+          "notes": "ens per essentiam\nens divinum \nens infinitum",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#00ffff",
+          "division": "",
+          "name": "Ens per participationem",
+          "notes": "Ens creatum\nEns invenitur in pluribus secundum prius et posterius. Illud tamen verissime et primo dicitur ens cujus esse est ipsum quod est, quia esse ejus non est receptum, sed per se subsistens. In omnibus autem quae secundum prius et posterius dicuntur, primum eorum quae sunt, potest esse causa; et per se dictum, est causa ejus quod per participationem dicitur (Super Sent., lib. 2 d. 37 q. 1 a. 2 co.).",
+          "readOnly": false
+        }
+      ],
+      "color": "#00ffff",
+      "division": "Divisio V",
+      "name": "Divisio V",
+      "notes": "Ens invenitur in pluribus secundum prius et posterius. Illud tamen verissime et primo dicitur ens cujus esse est ipsum quod est, quia esse ejus non est receptum, sed per se subsistens. In omnibus autem quae secundum prius et posterius dicuntur, primum eorum quae sunt, potest esse causa; et per se dictum, est causa ejus quod per participationem dicitur (Super Sent., lib. 2 d. 37 q. 1 a. 2 co.).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#ffff00",
+          "division": "",
+          "name": "Ens contingens",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#ffff00",
+          "division": "",
+          "name": "Ens necessarium",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#ffff00",
+      "division": "",
+      "name": "Divisio VI",
+      "notes": "Ens autem dividitur per contingens et necessarium: et est per se divisio entis (ScG lib. 3 cap. 72 n. 3).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [],
+              "color": "#008000",
+              "division": "",
+              "name": "Ens per se",
+              "notes": "",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "Ens actu",
+              "notes": "",
+              "readOnly": false
+            }
+          ],
+          "color": "#ffce00",
+          "division": "",
+          "name": "Ens quidem perfectum, scilicet...",
+          "notes": "Ens completum.\n\nEns, quod est extra animam... est ens perfectum (Sententia Metaphysicae, lib. 5 l. 9 n. 5).",
+          "readOnly": false
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "color": "#008000",
+              "division": "",
+              "name": "Ens in alio",
+              "notes": "",
+              "readOnly": false
+            },
+            {
+              "children": [],
+              "color": "#0000ff",
+              "division": "",
+              "name": "ens in potentia",
+              "notes": "",
+              "readOnly": false
+            }
+          ],
+          "color": "#ffce00",
+          "division": "",
+          "name": "Ens imperfectum, scilicet...",
+          "notes": "Ens incompletum.\nFormae et accidentia non sunt entia completa, cum non subsistant, sed quodlibet eorum est aliquid entis (ST I, q. 104 a. 4 ad 3).\nEt ideo virtus instrumenti inquantum hujusmodi... non est ens completum habens esse fixum in natura, sed quoddam ens incompletum... et hujusmodi entia consueverunt intentiones nominari, et habent aliquid simile cum ente, quod est in anima quod est ens diminutum, ut dicitur in 6 Metaph. (Super Sent., lib. 4 d. 1 q. 1 a. 4 qc. 2 co.).",
+          "readOnly": false
+        }
+      ],
+      "color": "#ffce00",
+      "division": "Lexicon 5",
+      "name": "Divisio VII",
+      "notes": "Scire igitur oportet quod diversae rerum species gradatim naturam entis possident. Statim enim in prima entis divisione invenitur hoc quidem perfectum, scilicet ens per se et ens actu: aliud vero imperfectum, scilicet ens in alio et ens in potentia... Propter quod Aristoteles, in VIII Metaph., dicit quod definitiones rerum sunt sicut numerus (ScG lib. 2 cap. 95 n. 2).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#ff009c",
+          "division": "",
+          "name": "Ens absolute sive simpliciter",
+          "notes": "Ens absolute et per prius dicitur de substantiis et per posterius et quasi secundum quid de accidentibus (De ente et essentia, cap. 1).",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#ff009c",
+          "division": "",
+          "name": "Ens hoc sive tale",
+          "notes": "Esse autem simpliciter per creationem causatur, quae nihil praesupponit: quia non potest aliquid praeexistere quod sit extra ens simpliciter. Per alias factiones fit hoc ens vel tale: nam ex ente praeexistente fit hoc ens vel tale (ScG, lib. 2 cap. 21 n. 4).\nSed considerandum est quod materia per formam contrahitur ad determinatam speciem... Utrique igitur consideraverunt ens particulari quadam consideratione, vel inquantum est hoc ens, vel inquantum est tale ens (ST I, q. 44 a. 2 co).",
+          "readOnly": false
+        }
+      ],
+      "color": "#ff009c",
+      "division": "",
+      "name": "Lexicon 1",
+      "notes": "",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#7c00ff",
+          "division": "",
+          "name": "Ens commune",
+          "notes": "Ens commune sive universale sive in universali.\nEsse cui nulla fit additio, est esse commune quod de omnibus praedicatur (ST I, q. 3 a. 4 arg. 1).\nAliquid cui non fit additio potest intelligi dupliciter... Primo igitur modo, esse sine additione, est esse divinum, secundo modo, esse sine additione, est esse commune (ST I, q. 3 a. 4 ad 1).",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#7c00ff",
+          "division": "",
+          "name": "Ens particulare",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#7c00ff",
+      "division": "",
+      "name": "Lexicon 4",
+      "notes": "",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#00ff6d",
+          "division": "",
+          "name": "Ens immobile",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#00ff6d",
+          "division": "",
+          "name": "Ens mobile",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#00ff6d",
+      "division": "",
+      "name": "Lexicon 14",
+      "notes": "",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#619061",
+          "division": "",
+          "name": "Ens infinitum",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#619061",
+          "division": "",
+          "name": "Ens finitum",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#83ff00",
+      "division": "",
+      "name": "Lexicon 21",
+      "notes": "Intellectus divinus non est in potentia, sed est actus purus. Nullus autem intellectus creatus potest se habere ut actus respectu totius entis universalis, quia sic oporteret quod esset ens infinitum. Unde omnis intellectus creatus, per hoc ipsum quod est, non est actus omnium intelligibilium, sed comparatur ad ipsa intelligibilia sicut potentia ad actum (ST I, q. 79 a.2 co.).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#800000",
+          "division": "",
+          "name": "Ens inseparabile",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#800000",
+          "division": "",
+          "name": "Ens separabile",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#800000",
+      "division": "",
+      "name": "Lexicon 27",
+      "notes": "Entium enim quaedam sunt separabilia,scilicet substantiae; alia sunt inseparabilia, scilicet accidentia, quia passiones et motus et huiusmodi accidentia non possunt esse sine substantiis (Sententia Metaphysicae, lib. 12 l. 4 n. 21).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#9e9e66",
+          "division": "",
+          "name": "Ens simpliciter",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#9e9e66",
+          "division": "",
+          "name": "Ens secundum quid",
+          "notes": "",
+          "readOnly": false
+        }
+      ],
+      "color": "#9e9e66",
+      "division": "",
+      "name": "Lexicon 47",
+      "notes": "Ad tertium dicendum quod bonum et ens dupliciter dicitur. Uno modo, simpliciter. Et sic bonum et ens dicitur substantia, quae in suo esse et in sua bonitate subsistit. Alio modo dicitur ens et bonum secundum quid. Et hoc modo dicitur ens accidens, non quia ipsum habeat esse et bonitatem, sed quia eo subiectum est ens et bonum (ST III q. 11 a. 5 ad 3).",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#0000ff",
+          "division": "",
+          "name": "Ens dividitur per potentiam et actum",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#808000",
+          "division": "",
+          "name": "Ens dividitur secundum decem genera",
+          "notes": "",
+          "readOnly": false
+        },
+        {
+          "children": [],
+          "color": "#008080",
+          "division": "",
+          "name": "Ens quod est ad aliquid (ens debilissimum)",
+          "notes": "Tertia divisio est unius generis entium, scilicet eius quod est ad aliquid.",
+          "readOnly": false
+        }
+      ],
+      "color": "#008080",
+      "division": "",
+      "name": "In Physicorum 3",
+      "notes": "In Physic., lib. 3 l. 1 n. 6",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#ff0000",
+          "division": "",
+          "name": "Ens positivum",
+          "notes": "Malum vero per se sumptum, est ipsa privatio vel corruptio; unde non sequitur quod sit ens positive dictum, quia non privat et corrumpit agendo (Super Sent., lib. 2 d. 34 q. 1 a. 2 ad 4).",
+          "readOnly": false
+        }
+      ],
+      "color": "#ff0000",
+      "division": "",
+      "name": "Lexicon 40",
+      "notes": "",
+      "readOnly": false
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "color": "#ffb800",
+          "division": "",
+          "name": "Ens privatum",
+          "notes": "Ens enim dupliciter dicitur, ut philosophus in metaphysica docet. Uno modo, secundum quod significat essentiam rei, et dividitur per decem praedicamenta: et sic nulla privatio potest dici ens. Alio modo, secundum quod significat veritatem compositionis: et sic malum et privatio dicitur ens, inquantum privatione dicitur aliquid esse privatum (ScG, lib. 3 cap. 8 n. 13).",
+          "readOnly": false
+        }
+      ],
+      "color": "#ffb800",
+      "division": "",
+      "name": "Lexicon 44",
+      "notes": "",
+      "readOnly": false
+    }
+  ],
+  "color": "#dddddd",
+  "division": "",
+  "name": "ens",
+  "notes": "Ens nihil est aliud quam quod est\n1. Expositio Peryermenias lib. 1 l .5 n. 20\n2. Sententia Metaphysicae, lib. 5 l. 9; lib. 6 l. 2 n. 1.\n3. Super Sent. lib. 2 d. 37 q. 1 a. 2 co.",
+  "readOnly": true
+}

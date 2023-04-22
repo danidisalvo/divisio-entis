@@ -1,0 +1,17 @@
+# Stage 1
+FROM golang:1.20 AS builder
+
+WORKDIR /app
+COPY ./backend/go.mod ./backend/go.sum ./
+RUN go mod download
+COPY ./backend/ ./
+RUN go mod tidy
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags '-extldflags "-static"' -o /divisio-entis-backend
+
+# Stage 2
+FROM scratch
+
+COPY --from=builder /divisio-entis-backend /divisio-entis-backend
+ENV GIN_MODE=release
+EXPOSE 8080
+ENTRYPOINT ["/divisio-entis-backend"]

@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-menu-item [routerLink]="['graph']">
+      <mat-icon>bubble_chart</mat-icon>
+      <span>Graph</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item [routerLink]="['download']">
+      <mat-icon>cloud_download</mat-icon>
+      <span>Download</span>
+    </button>
+    <button mat-menu-item [routerLink]="['upload']">
+      <mat-icon>cloud_upload</mat-icon>
+      <span>Upload</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item [routerLink]="['help']">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-menu>
+
+  <div class="toolbar-spacer"></div>
+  Divisio Entis
+  <div class="toolbar-spacer"></div>
+
+</mat-toolbar>
+<div class="container">
+  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+  <router-outlet *ngIf="!isIframe"></router-outlet>
+</div>

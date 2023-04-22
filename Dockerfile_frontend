@@ -1,0 +1,18 @@
+# see https://stackoverflow.com/questions/67788588/how-can-i-dockerize-my-angular-app-for-production
+
+# Stage 1
+FROM node:18-alpine AS builder
+WORKDIR /usr/src/workdir
+COPY ./frontend .
+RUN npm i -g @angular/cli@15.2.6
+RUN npm i --save-dev @types/d3
+RUN npm i --save-dev @types/uuid
+#RUN npm i --save  @angular-material-components/color-picker
+
+RUN npm run build --silent
+
+# Stage 2
+FROM nginx:alpine
+COPY ./frontend/nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /usr/src/workdir/dist/frontend /etc/nginx/html
+EXPOSE 80

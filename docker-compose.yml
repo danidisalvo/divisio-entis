@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      dockerfile: Dockerfile_backend
+    ports:
+      - "8080:8080"
+  frontend:
+    build:
+      dockerfile: Dockerfile_frontend
+    ports:
+      - "80:80"

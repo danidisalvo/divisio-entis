@@ -1,0 +1,75 @@
+{
+  "name": "ens",
+  "readOnly": false,
+  "color": "#dddddd",
+  "division": "",
+  "notes": "",
+  "children": [
+    {
+      "name": "B",
+      "readOnly": false,
+      "color": "#ff0000",
+      "division": "division 1",
+      "notes": "notes B",
+      "children": null
+    },
+    {
+      "name": "C",
+      "readOnly": false,
+      "color": "#ff0000",
+      "division": "division 1",
+      "notes": "notes C",
+      "children": null
+    },
+    {
+      "name": "D",
+      "readOnly": false,
+      "color": "#00ff00",
+      "division": "division 2",
+      "notes": "notes D",
+      "children": [
+        {
+          "name": "F",
+          "readOnly": false,
+          "color": "#0000ff",
+          "division": "division 3",
+          "notes": "notes F",
+          "children": null
+        },
+        {
+          "name": "G",
+          "readOnly": false,
+          "color": "#0000ff",
+          "division": "division 3",
+          "notes": "notes G",
+          "children": [
+            {
+              "name": "H",
+              "readOnly": false,
+              "color": "#00ffff",
+              "division": "division 4",
+              "notes": "notes H",
+              "children": null
+            },
+            {
+              "name": "I",
+              "readOnly": false,
+              "color": "#00ffff",
+              "division": "division 4",
+              "notes": "notes I",
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "E",
+      "readOnly": false,
+      "color": "#00ff00",
+      "division": "division 2",
+      "notes": "notes E",
+      "children": null
+    }
+  ]
+}
