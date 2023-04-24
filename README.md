@@ -1,6 +1,6 @@
 # divisio-entis
 
-_Divisio Entis_ aims to show the divisio of _ens_ found in St. Thomas Aquinas's corpus.
+_Divisio Entis_ aims to show the division of _ens_ found in St. Thomas Aquinas's corpus.
 
 1. Build and start the Docker container
 ```bash
