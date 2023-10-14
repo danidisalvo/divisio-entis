@@ -30,8 +30,8 @@ export class GraphComponent implements OnInit {
   private pathStrokeWidth = 2;
   private strokeColor = '#98989C';
   private margin = {top: 20, right: 50, bottom: 20, left: 50};
-  private height = 1080 - this.margin.top - this.margin.bottom;
-  private width = 1920 - this.margin.left - this.margin.right;
+  private height = 1920 * 2 - this.margin.top - this.margin.bottom;
+  private width = 1920 * 2- this.margin.left - this.margin.right;
   private transitionDuration = 750;
 
   message!: string | null;
