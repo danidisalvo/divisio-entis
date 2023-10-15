@@ -267,7 +267,7 @@
         {
           "name": "ens as praedicatum",
           "readOnly": false,
-          "color": "#46a253",
+          "color": "#ff00ff",
           "notes": "",
           "children": [
             {
@@ -295,14 +295,14 @@
             {
               "name": "ens positivum",
               "readOnly": false,
-              "color": "#46a253",
+              "color": "#ff00ff",
               "notes": "",
               "children": []
             },
             {
               "name": "privatio vel ens privatum",
               "readOnly": false,
-              "color": "#febf00",
+              "color": "#ff00ff",
               "notes": "",
               "children": []
             }
@@ -338,7 +338,7 @@
                 {
                   "name": "privatio vel ens privatum",
                   "readOnly": false,
-                  "color": "#febf00",
+                  "color": "#ff00ff",
                   "notes": "",
                   "children": []
                 },
@@ -352,9 +352,9 @@
               ]
             },
             {
-              "name": "",
+              "name": "ex mutatione",
               "readOnly": false,
-              "color": "#febf00",
+              "color": "#dddddd",
               "notes": "",
               "children": [
                 {
@@ -428,17 +428,24 @@
             {
               "name": "ens in se",
               "readOnly": false,
-              "color": "#febf00",
+              "color": "#ff00ff",
               "notes": "",
               "children": [
                 {
-                  "name": "unum",
+                  "name": "de transcendentibus",
                   "readOnly": false,
-                  "color": "#febf00",
+                  "color": "#dddddd",
                   "notes": "",
                   "children": [
                     {
-                      "name": "ens indivisum",
+                      "name": "unum vel ens indivisum",
+                      "readOnly": false,
+                      "color": "#febf00",
+                      "notes": "",
+                      "children": []
+                    },
+                    {
+                      "name": "multa",
                       "readOnly": false,
                       "color": "#febf00",
                       "notes": "",
@@ -447,10 +454,10 @@
                   ]
                 },
                 {
-                  "name": "multa",
+                  "name": "de ceteris",
                   "readOnly": false,
-                  "color": "#febf00",
-                  "notes": "",
+                  "color": "#dddddd",
+                  "notes": "see ex-predicatione",
                   "children": []
                 }
               ]
@@ -536,28 +543,6 @@
           "readOnly": false,
           "color": "#b44848",
           "notes": "Deus",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "ex perfectione",
-      "readOnly": false,
-      "color": "#dddddd",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens completum vel perfectum",
-          "readOnly": false,
-          "color": "#008080",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens incompletum vel imperfectum",
-          "readOnly": false,
-          "color": "#008080",
-          "notes": "",
           "children": []
         }
       ]
@@ -689,6 +674,28 @@
           "name": "ens per participationem",
           "readOnly": false,
           "color": "#c4ce4c",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex perfectione",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens perfectum vel completum",
+          "readOnly": false,
+          "color": "#008080",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens imperfectum vel incompletum",
+          "readOnly": false,
+          "color": "#008080",
           "notes": "",
           "children": []
         }
