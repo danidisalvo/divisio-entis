@@ -1,188 +1,86 @@
 {
   "name": "ens",
   "readOnly": true,
-  "color": "#dddddd",
-  "division": "",
+  "color": "#000000",
   "notes": "",
   "children": [
     {
-      "name": "compositio",
+      "name": "ex certitudine scientiae",
       "readOnly": false,
-      "color": "#000000",
-      "division": "",
+      "color": "#dddddd",
       "notes": "",
       "children": [
-        {
-          "name": "ens compositum",
-          "readOnly": false,
-          "color": "#000000",
-          "division": "",
-          "notes": "The subject of the mathematical and physical sciences. It has an increased degree of complexity from ens indivisibile to ens mobile.",
-          "children": [
-            {
-              "name": "ens indivisibile",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "ens quantum",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "ens mobile",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        },
         {
           "name": "ens simpliciter",
           "readOnly": false,
-          "color": "#000000",
-          "division": "",
-          "notes": "The object of metaphysics. It can be considered a synonym for ens commune.",
+          "color": "#ffff00",
+          "notes": "The object of metaphysics.",
           "children": [
             {
-              "name": "substantia 1",
+              "name": "ens mobile",
               "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "accidens 1",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "res sensibile-ens universale",
-      "readOnly": false,
-      "color": "#808000",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens in mente 1",
-          "readOnly": false,
-          "color": "#808000",
-          "division": "",
-          "notes": "For Aquinas, universals exist formally in the mind, but only potentially in things.",
-          "children": []
-        },
-        {
-          "name": "ens in re or ens extra animam 1",
-          "readOnly": false,
-          "color": "#808000",
-          "division": "",
-          "notes": "This division partially overlaps with the composition-based division, since in sensible beings there is a composition of matter and form, but in intellectual ones, there is not.",
-          "children": [
-            {
-              "name": "ens sensibile 1",
-              "readOnly": false,
-              "color": "#808000",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "ens intellectuale (ens intelligibile or ens intentionale) 1",
-              "readOnly": false,
-              "color": "#808000",
-              "division": "",
+              "color": "#ffff00",
               "notes": "",
               "children": []
             }
           ]
         },
         {
-          "name": "ens quod nihil habet extra animam",
+          "name": "ens indivisibile",
           "readOnly": false,
-          "color": "#808000",
-          "division": "",
-          "notes": "",
-          "children": []
+          "color": "#ffff00",
+          "notes": "The subject of arithmetic",
+          "children": [
+            {
+              "name": "ens quantum",
+              "readOnly": false,
+              "color": "#ffff00",
+              "notes": "The subject of geometry",
+              "children": [
+                {
+                  "name": "ens mobile",
+                  "readOnly": false,
+                  "color": "#ffff00",
+                  "notes": "",
+                  "children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "name": "ex gradibus",
       "readOnly": false,
-      "color": "#00ffff",
-      "division": "",
+      "color": "#dddddd",
       "notes": "",
       "children": [
         {
-          "name": "ens intellectuale 2",
+          "name": "ens intellectuale",
           "readOnly": false,
-          "color": "#00ffff",
-          "division": "",
+          "color": "#ff0000",
           "notes": "",
           "children": []
         },
         {
           "name": "ens rationale",
           "readOnly": false,
-          "color": "#00ffff",
-          "division": "",
+          "color": "#ff0000",
           "notes": "",
           "children": []
         },
         {
-          "name": "ens sensibile 2",
+          "name": "ens sensibile",
           "readOnly": false,
-          "color": "#808000",
-          "division": "",
+          "color": "#ff0000",
           "notes": "",
           "children": []
         },
         {
           "name": "simpliciter existentia",
           "readOnly": false,
-          "color": "#00ffff",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "modal division",
-      "readOnly": false,
-      "color": "#00ff00",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens necessarium",
-          "readOnly": false,
-          "color": "#00ff00",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens contingens",
-          "readOnly": false,
-          "color": "#00ff00",
-          "division": "",
+          "color": "#ff0000",
           "notes": "",
           "children": []
         }
@@ -191,37 +89,32 @@
     {
       "name": "actus-potentia",
       "readOnly": false,
-      "color": "#ff0000",
-      "division": "",
+      "color": "#dddddd",
       "notes": "",
       "children": [
         {
           "name": "ens in actu",
           "readOnly": false,
-          "color": "#ff0000",
-          "division": "",
+          "color": "#808000",
           "notes": "",
           "children": [
             {
               "name": "ens in actu simpliciter",
               "readOnly": false,
-              "color": "#ff0000",
-              "division": "",
+              "color": "#808000",
               "notes": "",
               "children": [
                 {
-                  "name": "ens actu in se 1",
+                  "name": "ens actu in se",
                   "readOnly": false,
-                  "color": "#ff0000",
-                  "division": "",
+                  "color": "#808000",
                   "notes": "",
                   "children": []
                 },
                 {
-                  "name": "ens actu in alio 1",
+                  "name": "ens actu in alio",
                   "readOnly": false,
-                  "color": "#ff0000",
-                  "division": "",
+                  "color": "#808000",
                   "notes": "",
                   "children": []
                 }
@@ -230,23 +123,20 @@
             {
               "name": "ens in actu secundum quid",
               "readOnly": false,
-              "color": "#ff0000",
-              "division": "",
+              "color": "#808000",
               "notes": "",
               "children": [
                 {
-                  "name": "ens actu in se 2",
+                  "name": "ens actu in se",
                   "readOnly": false,
-                  "color": "#ff0000",
-                  "division": "",
+                  "color": "#808000",
                   "notes": "",
                   "children": []
                 },
                 {
-                  "name": "ens actu in alio 2",
+                  "name": "ens actu in alio",
                   "readOnly": false,
-                  "color": "#ff0000",
-                  "division": "",
+                  "color": "#808000",
                   "notes": "",
                   "children": []
                 }
@@ -257,23 +147,20 @@
         {
           "name": "ens in potentia (ens diminutum)",
           "readOnly": false,
-          "color": "#ff0000",
-          "division": "",
+          "color": "#808000",
           "notes": "",
           "children": [
             {
               "name": "ens in potentia simpliciter",
               "readOnly": false,
-              "color": "#ff0000",
-              "division": "",
+              "color": "#808000",
               "notes": "",
               "children": []
             },
             {
               "name": "ens in potentia secundum quid",
               "readOnly": false,
-              "color": "#ff0000",
-              "division": "",
+              "color": "#808000",
               "notes": "",
               "children": []
             }
@@ -282,367 +169,140 @@
       ]
     },
     {
-      "name": "unum-multa",
+      "name": "ex praedicatione",
       "readOnly": false,
-      "color": "#0000ff",
-      "division": "",
-      "notes": "de transcendentibus",
-      "children": [
-        {
-          "name": "unum 1",
-          "readOnly": false,
-          "color": "#0000ff",
-          "division": "",
-          "notes": "",
-          "children": [
-            {
-              "name": "ens indivisum 1",
-              "readOnly": false,
-              "color": "#0000ff",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "multa",
-          "readOnly": false,
-          "color": "#0000ff",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "per se-per accidens",
-      "readOnly": false,
-      "color": "#ffff00",
-      "division": "",
+      "color": "#dddddd",
       "notes": "",
       "children": [
         {
-          "name": "ens per se",
+          "name": " res sensibile-ens universale",
           "readOnly": false,
-          "color": "#ffff00",
-          "division": "",
+          "color": "#dddddd",
           "notes": "",
           "children": [
             {
-              "name": "ens extra animam (ens perfectum) 2",
+              "name": "ens per se vel in se",
               "readOnly": false,
-              "color": "#808000",
-              "division": "",
+              "color": "#ff00ff",
               "notes": "",
               "children": [
                 {
-                  "name": "substantia 2",
+                  "name": "ens in re vel extra animam vel perfectum",
                   "readOnly": false,
-                  "color": "#000000",
-                  "division": "",
-                  "notes": "",
+                  "color": "#ff00ff",
+                  "notes": "This division partially overlaps with the composition-based division, since in sensible beings there is a composition of matter and form, but in intellectual ones, there is not.",
+                  "children": [
+                    {
+                      "name": " ens sensibile-ens intellectuale",
+                      "readOnly": false,
+                      "color": "#dddddd",
+                      "notes": "",
+                      "children": [
+                        {
+                          "name": "ens sensibile",
+                          "readOnly": false,
+                          "color": "#ff00ff",
+                          "notes": "",
+                          "children": []
+                        },
+                        {
+                          "name": "ens intellectuale vel intelligibile vel intentionale",
+                          "readOnly": false,
+                          "color": "#ff00ff",
+                          "notes": "",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "name": " substantia-accidens",
+                      "readOnly": false,
+                      "color": "#dddddd",
+                      "notes": "",
+                      "children": [
+                        {
+                          "name": "substantia",
+                          "readOnly": false,
+                          "color": "#ff00ff",
+                          "notes": "",
+                          "children": []
+                        },
+                        {
+                          "name": "accidens",
+                          "readOnly": false,
+                          "color": "#ff00ff",
+                          "notes": "",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ens in mente",
+                  "readOnly": false,
+                  "color": "#ff00ff",
+                  "notes": "For Aquinas, universals exist formally in the mind, but only potentially in things.",
                   "children": []
                 },
                 {
-                  "name": "accidens 2",
+                  "name": "ens quod nihil habet extra animam",
                   "readOnly": false,
-                  "color": "#000000",
-                  "division": "",
+                  "color": "#ff00ff",
                   "notes": "",
                   "children": []
                 }
+
               ]
             },
             {
-              "name": "ens in mente 2",
+              "name": "ens per accidens",
               "readOnly": false,
-              "color": "#808000",
-              "division": "",
+              "color": "#ff00ff",
               "notes": "",
               "children": []
             }
           ]
         },
-        {
-          "name": "ens per accidens",
-          "readOnly": false,
-          "color": "#ffff00",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "modus essendi",
-      "readOnly": false,
-      "color": "#febf00",
-      "division": "",
-      "notes": "o modus entis",
-      "children": [
-        {
-          "name": "ens debilissimum (unum in mente)",
-          "readOnly": false,
-          "color": "#febf00",
-          "division": "",
-          "notes": "",
-          "children": [
-            {
-              "name": "negatio",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "privatio or ens privatum 1",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "relatio",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "mutatio",
-          "readOnly": false,
-          "color": "#febf00",
-          "division": "",
-          "notes": "",
-          "children": [
-            {
-              "name": "generatio",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "corruptio",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "motus",
-              "readOnly": false,
-              "color": "#febf00",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "ens debile (in alio)",
-          "readOnly": false,
-          "color": "#febf00",
-          "division": "",
-          "notes": "",
-          "children": [
-            {
-              "name": "categories (except substance)",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            },
-            {
-              "name": "properties of substance",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "ens perfectissimum (per se, cum esse fixum in natura)",
-          "readOnly": false,
-          "color": "#febf00",
-          "division": "",
-          "notes": "",
-          "children": [
-            {
-              "name": "substantia 3",
-              "readOnly": false,
-              "color": "#000000",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "mobilitas",
-      "readOnly": false,
-      "color": "#d601ff",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens immobile",
-          "readOnly": false,
-          "color": "#d601ff",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens mobile 2",
-          "readOnly": false,
-          "color": "#000000",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "completio (perfectio)",
-      "readOnly": false,
-      "color": "#407d7f",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens completum (perfectum)",
-          "readOnly": false,
-          "color": "#407d7f",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens incompletum (imperfectum)",
-          "readOnly": false,
-          "color": "#407d7f",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "naturale-divinum",
-      "readOnly": false,
-      "color": "#ebe333",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens divinum",
-          "readOnly": false,
-          "color": "#ebe333",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens naturale",
-          "readOnly": false,
-          "color": "#ebe333",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "corruptibilitas",
-      "readOnly": false,
-      "color": "#858585",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens corruptibile",
-          "readOnly": false,
-          "color": "#858585",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens incorruptibile",
-          "readOnly": false,
-          "color": "#858585",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "predicatio",
-      "readOnly": false,
-      "color": "#46a253",
-      "division": "",
-      "notes": "",
-      "children": [
         {
           "name": "ens as praedicatum",
           "readOnly": false,
           "color": "#46a253",
-          "division": "",
           "notes": "",
           "children": [
             {
-              "name": "praedicatum accidentale (an est)",
+              "name": "praedicatum accidentale (in mente)",
               "readOnly": false,
-              "color": "#46a253",
-              "division": "",
-              "notes": "",
+              "color": "#ff00ff",
+              "notes": "an est",
               "children": []
             },
             {
-              "name": "praedicatum substantiale (quid est)",
+              "name": "praedicatum substantiale (in re)",
               "readOnly": false,
-              "color": "#46a253",
-              "division": "",
-              "notes": "",
+              "color": "#ff00ff",
+              "notes": "quid est",
               "children": []
             }
           ]
         },
         {
-          "name": "positivitas",
+          "name": "ex positivitate",
           "readOnly": false,
-          "color": "#46a253",
-          "division": "",
+          "color": "#dddddd",
           "notes": "",
           "children": [
             {
               "name": "ens positivum",
               "readOnly": false,
               "color": "#46a253",
-              "division": "",
               "notes": "",
               "children": []
             },
             {
-              "name": "privatio or ens privatum 2",
+              "name": "privatio vel ens privatum",
               "readOnly": false,
               "color": "#febf00",
-              "division": "",
               "notes": "",
               "children": []
             }
@@ -651,239 +311,193 @@
       ]
     },
     {
-      "name": "causalitas",
+      "name": "ex modo",
       "readOnly": false,
-      "color": "#b44848",
-      "division": "",
+      "color": "#dddddd",
       "notes": "",
       "children": [
         {
-          "name": "ens causatum",
+          "name": "modus essendi",
           "readOnly": false,
-          "color": "#b44848",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens incausatum",
-          "readOnly": false,
-          "color": "#b44848",
-          "division": "",
-          "notes": "",
+          "color": "febf00",
+          "notes": "modus entis",
           "children": [
             {
-              "name": "Deus 1",
+              "name": "ens debilissimum",
               "readOnly": false,
-              "color": "#9a9a9a",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "partecipatio",
-      "readOnly": false,
-      "color": "#9a9a9a",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ipsum esse subsistens",
-          "readOnly": false,
-          "color": "#9a9a9a",
-          "division": "",
-          "notes": "",
-          "children": [
+              "color": "#febf00",
+              "notes": "unum in mente",
+              "children": [
+                {
+                  "name": "negatio",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                },
+                {
+                  "name": "privatio vel ens privatum",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                },
+                {
+                  "name": "relatio",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                }
+              ]
+            },
             {
-              "name": "Deus 1",
+              "name": "",
               "readOnly": false,
-              "color": "#9a9a9a",
-              "division": "",
+              "color": "#febf00",
               "notes": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "name": "ens per participationem",
-          "readOnly": false,
-          "color": "#9a9a9a",
-          "division": "",
-          "notes": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "name": "creatum-increatum",
-      "readOnly": false,
-      "color": "#000080",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens creatum",
-          "readOnly": false,
-          "color": "#000080",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens increatum",
-          "readOnly": false,
-          "color": "#000080",
-          "division": "",
-          "notes": "",
-          "children": [
+              "children": [
+                {
+                  "name": "generatio",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                },
+                {
+                  "name": "corruptio",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                },
+                {
+                  "name": "motus",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
+                }
+              ]
+            },
             {
-              "name": "Deus 3",
+              "name": "ens debile",
               "readOnly": false,
-              "color": "#9a9a9a",
-              "division": "",
-              "notes": "",
-              "children": []
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "finitum-infinitum",
-      "readOnly": false,
-      "color": "#000080",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "ens finitum",
-          "readOnly": false,
-          "color": "#000080",
-          "division": "",
-          "notes": "",
-          "children": []
-        },
-        {
-          "name": "ens infinitum",
-          "readOnly": false,
-          "color": "#000080",
-          "division": "",
-          "notes": "",
-          "children": [
+              "color": "#febf00",
+              "notes": "in alio",
+              "children": [
+                {
+                  "name": "novem categoriae",
+                  "readOnly": false,
+                  "color": "#ff00ff",
+                  "notes": "exclusa substantia",
+                  "children": []
+                },
+                {
+                  "name": "proprietates substantiae",
+                  "readOnly": false,
+                  "color": "#ff00ff",
+                  "notes": "",
+                  "children": []
+                }
+              ]
+            },
             {
-              "name": "Deus 4",
+              "name": "ens perfectissimum",
               "readOnly": false,
-              "color": "#9a9a9a",
-              "division": "",
-              "notes": "",
-              "children": []
+              "color": "#febf00",
+              "notes": "per se, cum esse fixum in natura",
+              "children": [
+                {
+                  "name": "substantia",
+                  "readOnly": false,
+                  "color": "#ff00ff",
+                  "notes": "",
+                  "children": []
+                }
+              ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "name": "per additionem",
-      "readOnly": false,
-      "color": "#f3bdf2",
-      "division": "",
-      "notes": "",
-      "children": [
-        {
-          "name": "modus essendi 2",
-          "readOnly": false,
-          "color": "#f3bdf2",
-          "division": "",
-          "notes": "",
-          "children": []
         },
         {
           "name": "modus generalis consequens omne ens",
           "readOnly": false,
-          "color": "#f3bdf2",
-          "division": "",
+          "color": "#febf00",
           "notes": "",
           "children": [
             {
               "name": "ens in se",
               "readOnly": false,
-              "color": "#f3bdf2",
-              "division": "",
+              "color": "#febf00",
               "notes": "",
               "children": [
                 {
-                  "name": "unum 2",
+                  "name": "unum",
                   "readOnly": false,
-                  "color": "#0000ff",
-                  "division": "",
+                  "color": "#febf00",
                   "notes": "",
                   "children": [
                     {
-                      "name": "ens indivisum 2",
+                      "name": "ens indivisum",
                       "readOnly": false,
-                      "color": "#0000ff",
-                      "division": "",
+                      "color": "#febf00",
                       "notes": "",
                       "children": []
                     }
                   ]
+                },
+                {
+                  "name": "multa",
+                  "readOnly": false,
+                  "color": "#febf00",
+                  "notes": "",
+                  "children": []
                 }
               ]
             },
             {
               "name": "ens in ordine ad aliud",
               "readOnly": false,
-              "color": "#f3bdf2",
-              "division": "",
+              "color": "#febf00",
               "notes": "",
               "children": [
                 {
                   "name": "aliquid",
                   "readOnly": false,
-                  "color": "#f3bdf2",
-                  "division": "",
+                  "color": "#febf00",
                   "notes": "",
                   "children": []
                 },
                 {
                   "name": "bonum",
                   "readOnly": false,
-                  "color": "#f3bdf2",
-                  "division": "",
+                  "color": "#febf00",
                   "notes": "",
                   "children": [
                     {
                       "name": "ens perfectivum",
                       "readOnly": false,
-                      "color": "#f3bdf2",
-                      "division": "",
+                      "color": "#febf00",
                       "notes": "",
                       "children": []
                     },
                     {
-                      "name": "perfectibilitas",
+                      "name": "",
                       "readOnly": false,
-                      "color": "#f3bdf2",
-                      "division": "",
+                      "color": "#dddddd",
                       "notes": "",
                       "children": [
                         {
                           "name": "ens perfectibile",
                           "readOnly": false,
-                          "color": "#f3bdf2",
-                          "division": "",
+                          "color": "#febf00",
                           "notes": "",
                           "children": []
                         },
                         {
                           "name": "ens corruptivus",
                           "readOnly": false,
-                          "color": "#f3bdf2",
-                          "division": "",
+                          "color": "#febf00",
                           "notes": "",
                           "children": []
                         }
@@ -894,14 +508,189 @@
                 {
                   "name": "verum",
                   "readOnly": false,
-                  "color": "#f3bdf2",
-                  "division": "",
+                  "color": "#febf00",
                   "notes": "",
                   "children": []
                 }
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "ex causalitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens causatum",
+          "readOnly": false,
+          "color": "#b44848",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens incausatum",
+          "readOnly": false,
+          "color": "#b44848",
+          "notes": "Deus",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex perfectione",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens completum vel perfectum",
+          "readOnly": false,
+          "color": "#008080",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens incompletum vel imperfectum",
+          "readOnly": false,
+          "color": "#008080",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex corruptibilitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens corruptibile",
+          "readOnly": false,
+          "color": "#800080",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens incorruptibile",
+          "readOnly": false,
+          "color": "#800080",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex finitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens creatum vel finitum",
+          "readOnly": false,
+          "color": "#000080",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens increatum vel infinitum",
+          "readOnly": false,
+          "color": "#000080",
+          "notes": "Deus",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex divinitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens divinum",
+          "readOnly": false,
+          "color": "#ebe333",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens naturale",
+          "readOnly": false,
+          "color": "#ebe333",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex mobilitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens immobile",
+          "readOnly": false,
+          "color": "#00ff00",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens mobile",
+          "readOnly": false,
+          "color": "#ffff00",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex modalitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens necessarium",
+          "readOnly": false,
+          "color": "#00ffff",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens contingens",
+          "readOnly": false,
+          "color": "#00ffff",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "ex participatione",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ipsum esse subsistens",
+          "readOnly": false,
+          "color": "#c4ce4c",
+          "notes": "Deus",
+          "children": []
+        },
+        {
+          "name": "ens per participationem",
+          "readOnly": false,
+          "color": "#c4ce4c",
+          "notes": "",
+          "children": []
         }
       ]
     }

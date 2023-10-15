@@ -14,10 +14,6 @@ export class EditNodeDialogComponent {
       {value: this.data.node.color, disabled: this.data.node.readOnly},
       [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
     ],
-    division: [
-      {value: this.data.node.division, disabled: this.data.node.readOnly},
-      [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(32)]
-    ],
     notes: [
       {value: this.data.node.notes, disabled: this.data.node.readOnly},
       [Validators.maxLength(512)]
@@ -26,7 +22,6 @@ export class EditNodeDialogComponent {
     child: this.fb.group({
       name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(32)]],
       color: ['', [Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]],
-      division: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(32)]],
       notes: ['', [Validators.maxLength(512)]]
     })
   });
@@ -43,14 +38,12 @@ export class EditNodeDialogComponent {
       node: {
         name: this.data.node.name,
         color: this.form.controls['color'].value,
-        division: this.form.controls['division'].value,
         notes: this.form.controls['notes'].value,
         children: []
       },
       child: {
         name: this.form.controls['child'].controls['name'].value,
         color: this.form.controls['child'].controls['color'].value,
-        division: this.form.controls['child'].controls['division'].value,
         notes: this.form.controls['child'].controls['notes'].value,
         children: []
       },

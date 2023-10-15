@@ -18,19 +18,19 @@ const (
 )
 
 func TestNewNode_Success(t *testing.T) {
-	node, err := NewNode("new node", true, "", "first division", "some stuff")
+	node, err := NewNode("new node", true, "", "some stuff")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
 	if node.Name != "new node" || !node.ReadOnly ||
-		node.Color != defaultColor || node.Division != "first division" || node.Notes != "some stuff" {
-		t.Errorf("Expected {\"new node\", true, 'default color', \"first division\", \"some stuff\"}, got %v", node)
+		node.Color != defaultColor || node.Notes != "some stuff" {
+		t.Errorf("Expected {\"new node\", true, 'default color', \"some stuff\"}, got %v", node)
 	}
 }
 
 func TestNewNode_Fails(t *testing.T) {
-	_, err := NewNode("", true, "", "", "")
+	_, err := NewNode("", true, "", "")
 	if err == nil {
 		t.Errorf("NewNode did not return an error")
 		return
@@ -55,7 +55,7 @@ func TestNode_String(t *testing.T) {
 }
 
 func TestNode_Parse_Success(t *testing.T) {
-	root, err := NewNode("root", true, "", "", "")
+	root, err := NewNode("root", true, "", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -83,7 +83,7 @@ func TestNode_FindNode_Success(t *testing.T) {
 		return
 	}
 
-	expected, err := NewNode("F", false, blu, "division 3", "notes F")
+	expected, err := NewNode("F", false, blu, "notes F")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -139,7 +139,7 @@ func TestNode_AddNode_Success(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("K", false, "", "", "")
+	node, err := NewNode("K", false, "", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -181,7 +181,7 @@ func TestNode_AddNode_FailsNameIsNotUnique(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("K", false, "", "", "")
+	node, err := NewNode("K", false, "", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -202,7 +202,7 @@ func TestNode_AddNode_FailsParentNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("G", false, "", "", "")
+	node, err := NewNode("G", false, "", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -276,7 +276,7 @@ func TestNode_UpdateNode_Success(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("F", false, "", "New division F", "bla bla bla")
+	targetNode, err := NewNode("F", false, "", "bla bla bla")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -302,7 +302,7 @@ func TestNode_UpdateNode_FailsTargetNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("Z", false, "", "", "")
+	targetNode, err := NewNode("Z", false, "", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -323,7 +323,7 @@ func TestNode_UpdateNode_FailsParentNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("F", false, "", "", "")
+	targetNode, err := NewNode("F", false, "", "")
 	_, err = root.UpdateNode("Z", targetNode)
 	if err == nil {
 		t.Errorf("UpdateNode did not return an error")
@@ -346,46 +346,46 @@ func TestNode_Traverse_Success(t *testing.T) {
 }
 
 func provisionNodes() (*Node, []*Node, error) {
-	node, err := NewNode("ens", false, "", "", "")
+	node, err := NewNode("ens", false, "", "")
 	if err != nil {
 		return nil, nil, err
 	}
-	b, err := NewNode("B", false, red, "division 1", "notes B")
+	b, err := NewNode("B", false, red, "notes B")
 	if err != nil {
 	}
 	node.Children = append(node.Children, b)
 
-	c, err := NewNode("C", false, red, "division 1", "notes C")
+	c, err := NewNode("C", false, red, "notes C")
 	if err != nil {
 	}
 	node.Children = append(node.Children, c)
 
-	d, err := NewNode("D", false, green, "division 2", "notes D")
+	d, err := NewNode("D", false, green, "notes D")
 	if err != nil {
 	}
 	node.Children = append(node.Children, d)
 
-	e, err := NewNode("E", false, green, "division 2", "notes E")
+	e, err := NewNode("E", false, green, "notes E")
 	if err != nil {
 	}
 	node.Children = append(node.Children, e)
 
-	f, err := NewNode("F", false, blu, "division 3", "notes F")
+	f, err := NewNode("F", false, blu, "notes F")
 	if err != nil {
 	}
 	d.Children = append(d.Children, f)
 
-	g, err := NewNode("G", false, blu, "division 3", "notes G")
+	g, err := NewNode("G", false, blu, "notes G")
 	if err != nil {
 	}
 	d.Children = append(d.Children, g)
 
-	h, err := NewNode("H", false, yellow, "division 4", "notes H")
+	h, err := NewNode("H", false, yellow, "notes H")
 	if err != nil {
 	}
 	g.Children = append(g.Children, h)
 
-	i, err := NewNode("I", false, yellow, "division 4", "notes I")
+	i, err := NewNode("I", false, yellow, "notes I")
 	if err != nil {
 	}
 	g.Children = append(g.Children, i)

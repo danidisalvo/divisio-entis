@@ -25,7 +25,7 @@ type Graph struct {
 
 // NewGraph create a new graph
 func NewGraph() *Graph {
-	root, err := graph.NewNode(ens, true, "", "", "")
+	root, err := graph.NewNode(ens, true, "", "")
 	if err != nil {
 		log.Fatalf("Failed to create the root node [%v]", err)
 	}

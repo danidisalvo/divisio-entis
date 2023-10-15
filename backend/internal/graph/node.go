@@ -12,13 +12,12 @@ type Node struct {
 	Name     string  `json:"name"`
 	ReadOnly bool    `json:"readOnly"`
 	Color    string  `json:"color"`
-	Division string  `json:"division"`
 	Notes    string  `json:"notes"`
 	Children []*Node `json:"children"`
 }
 
 // NewNode creates a new node
-func NewNode(name string, readOnly bool, color, division, notes string) (*Node, error) {
+func NewNode(name string, readOnly bool, color, notes string) (*Node, error) {
 	if name == "" {
 		return nil, fmt.Errorf("name cannot be empty")
 	}
@@ -29,7 +28,6 @@ func NewNode(name string, readOnly bool, color, division, notes string) (*Node, 
 		Name:     name,
 		ReadOnly: readOnly,
 		Color:    color,
-		Division: division,
 		Notes:    notes,
 	}, nil
 }
@@ -136,7 +134,6 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 					} else {
 						child.Color = targetNode.Color
 					}
-					child.Division = targetNode.Division
 					child.Notes = targetNode.Notes
 					if targetNode.Children != nil && len(targetNode.Children) > 0 {
 						// there should be only one child

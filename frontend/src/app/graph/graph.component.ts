@@ -13,7 +13,6 @@ interface Node {
   name: string;
   readOnly: boolean,
   color: Color,
-  division: string,
   notes: string
   children?: Array<Node>
 }
@@ -97,7 +96,6 @@ export class GraphComponent implements OnInit {
         name: d.data.name,
         readOnly: d.data.readOnly,
         color: rbg == null ? new Color(0, 0, 0) : new Color(rbg.r, rbg.g, rbg.b),
-        division: d.data.division,
         notes: d.data.notes
       }
 
@@ -105,7 +103,6 @@ export class GraphComponent implements OnInit {
         name: '',
         readOnly: false,
         color: new Color(0, 0, 0),
-        division: '',
         notes: ''
       }
 
@@ -128,7 +125,6 @@ export class GraphComponent implements OnInit {
               name: result.child.name,
               readOnly: false,
               color: result.child.color.toHexString(),
-              division: result.child.division,
               notes: result.child.notes,
               children: []
             }
@@ -138,7 +134,6 @@ export class GraphComponent implements OnInit {
               name: result.node.name,
               readOnly: result.node.readOnly,
               color: result.node.color.toHexString(),
-              division: result.node.division,
               notes: result.node.notes,
               children: []
             }
@@ -147,7 +142,6 @@ export class GraphComponent implements OnInit {
                 name: result.child.name,
                 readOnly: false,
                 color: result.child.color.toHexString(),
-                division: result.child.division,
                 notes: result.child.notes,
                 children: []
               })
@@ -165,7 +159,6 @@ export class GraphComponent implements OnInit {
               // amend the current node
               result.d.data.color = result.node.color.toHexString();
               result.d.data.notes = result.node.notes;
-              result.d.data.division = result.node.division;
 
               // add a child
               if (result.addChild) {
@@ -189,7 +182,6 @@ export class GraphComponent implements OnInit {
                     name: result.child.name,
                     color: result.child.color.toHexString(),
                     notes: result.child.notes,
-                    division: result.child.division,
                     readOnly: false,
                     children: []
                   }
@@ -296,7 +288,7 @@ export class GraphComponent implements OnInit {
           return d.children || d._children ? 'end' : 'start';
         })
         .text((d: any) => {
-          return d.data.name;
+          return d.data.name.startsWith(' ') ?  '' : d.data.name;
         });
 
       // @ts-ignore

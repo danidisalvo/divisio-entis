@@ -26,14 +26,12 @@ describe('EditNodeDialogComponent', () => {
               name: 'name',
               readOnly: false,
               color: new Color(0, 0, 0),
-              division: 'division',
               notes: 'notes'
             },
             child: {
               name: '',
               readOnly: false,
               color: new Color(0, 0, 0),
-              division: '',
               notes: ''
             },
             addChild: false

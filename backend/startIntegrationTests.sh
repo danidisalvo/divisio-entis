@@ -28,7 +28,7 @@ echo "Health check ok"
 echo
 echo "Adding a node to the root"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"name":"A","readOnly":false,"color":"#ff0000","division":"","notes":"","children":null}' \
+  --data '{"name":"A","readOnly":false,"color":"#ff0000","notes":"","children":null}' \
   -X PUT http://localhost:8080/apis/nodes --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to add node A to the root"
@@ -48,7 +48,7 @@ echo "Added node A to the root"
 echo
 echo "Adding duplicated node to the root"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"name":"A","readOnly":false,"color":"#ff0000","division":"","notes":"duplicated node","children":null}' \
+  --data '{"name":"A","readOnly":false,"color":"#ff0000","notes":"duplicated node","children":null}' \
   -X PUT http://localhost:8080/apis/nodes --output output.json)
 if [ $response != 400 ]; then
   tearDown 1 "The duplicated node A was added to the root"
@@ -60,7 +60,7 @@ echo
 echo
 echo "Updating node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"name":"A","readOnly":false,"color":"#ff0000","division":"","notes":"I am A","children":null}' \
+  --data '{"name":"A","readOnly":false,"color":"#ff0000","notes":"I am A","children":null}' \
   -X PUT http://localhost:8080/apis/nodes/ens --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to update node A"
@@ -78,7 +78,7 @@ echo
 echo
 echo "Adding node B to node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"name":"A","readOnly":false,"color":"#ff0000","division":"new division","notes":"I am A", "children":[{"name":"B","readOnly":false,"color":"#ff0000","division":"","notes":"I am B","children":null}]}' \
+  --data '{"name":"A","readOnly":false,"color":"#ff0000","notes":"I am A", "children":[{"name":"B","readOnly":false,"color":"#ff0000","notes":"I am B","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/ens --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to add node B to node A"
@@ -96,7 +96,7 @@ echo
 echo
 echo "Adding a duplicated node to node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"name":"A","readOnly":false,"color":"#ff0000","division":"new division","notes":"I am A", "children":[{"name":"ens","readOnly":false,"color":"#ff0000","division":"","notes":"I am B","children":null}]}' \
+  --data '{"name":"A","readOnly":false,"color":"#ff0000","notes":"I am A", "children":[{"name":"ens","readOnly":false,"color":"#ff0000","notes":"I am B","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/ens --output output.json)
 if [ $response != 400 ]; then
   tearDown 1 "The duplicated node ens was added to node A"
