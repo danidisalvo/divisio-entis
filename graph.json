@@ -57,7 +57,7 @@
       "notes": "",
       "children": [
         {
-          "name": "ens intellectuale",
+          "name": "ens intellectuale vel separabile",
           "readOnly": false,
           "color": "#ff0000",
           "notes": "",
@@ -71,7 +71,7 @@
           "children": []
         },
         {
-          "name": "ens sensibile",
+          "name": "ens sensibile vel inseparabile",
           "readOnly": false,
           "color": "#ff0000",
           "notes": "",
@@ -221,14 +221,14 @@
                       "notes": "",
                       "children": [
                         {
-                          "name": "substantia",
+                          "name": "substantia (ens per se)",
                           "readOnly": false,
                           "color": "#ff00ff",
                           "notes": "",
                           "children": []
                         },
                         {
-                          "name": "accidens",
+                          "name": "accidens (ens per aliud et in alio)",
                           "readOnly": false,
                           "color": "#ff00ff",
                           "notes": "",
@@ -252,7 +252,6 @@
                   "notes": "",
                   "children": []
                 }
-
               ]
             },
             {
@@ -271,17 +270,17 @@
           "notes": "",
           "children": [
             {
-              "name": "praedicatum accidentale (in mente)",
+              "name": "praedicatum accidentale (in mente; ad quaestionem an est)",
               "readOnly": false,
               "color": "#ff00ff",
-              "notes": "an est",
+              "notes": "",
               "children": []
             },
             {
-              "name": "praedicatum substantiale (in re)",
+              "name": "praedicatum substantiale (in re; ad quaestionem quid est)",
               "readOnly": false,
               "color": "#ff00ff",
-              "notes": "quid est",
+              "notes": "",
               "children": []
             }
           ]
@@ -570,6 +569,28 @@
       ]
     },
     {
+      "name": "ex divinitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens divinum",
+          "readOnly": false,
+          "color": "#ebe333",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens naturale",
+          "readOnly": false,
+          "color": "#ebe333",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
       "name": "ex finitate",
       "readOnly": false,
       "color": "#dddddd",
@@ -592,22 +613,37 @@
       ]
     },
     {
-      "name": "ex divinitate",
+      "name": "ex mensura temporis",
       "readOnly": false,
       "color": "#dddddd",
       "notes": "",
       "children": [
         {
-          "name": "ens divinum",
+          "name": "ens atemporale",
           "readOnly": false,
-          "color": "#ebe333",
+          "color": "#dddddd",
           "notes": "",
-          "children": []
+          "children": [
+            {
+              "name": "ens aeternum",
+              "readOnly": false,
+              "color": "#b000ff",
+              "notes": "",
+              "children": []
+            },
+            {
+              "name": "ens aeviternum",
+              "readOnly": false,
+              "color": "#b000ff",
+              "notes": "",
+              "children": []
+            }
+          ]
         },
         {
-          "name": "ens naturale",
+          "name": "ens temporale",
           "readOnly": false,
-          "color": "#ebe333",
+          "color": "#b000ff",
           "notes": "",
           "children": []
         }
@@ -658,13 +694,35 @@
       ]
     },
     {
+      "name": "ex mutabilitate",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens immutabile",
+          "readOnly": false,
+          "color": "#bdf14a",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens mutabile",
+          "readOnly": false,
+          "color": "#bdf14a",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
       "name": "ex participatione",
       "readOnly": false,
       "color": "#dddddd",
       "notes": "",
       "children": [
         {
-          "name": "ipsum esse subsistens",
+          "name": "ens per essentiam (ipsum esse subsistens)",
           "readOnly": false,
           "color": "#c4ce4c",
           "notes": "Deus",
@@ -686,16 +744,106 @@
       "notes": "",
       "children": [
         {
-          "name": "ens perfectum vel completum",
+          "name": "ens perfectum vel completum vel fixum",
           "readOnly": false,
           "color": "#008080",
           "notes": "",
-          "children": []
+          "children": [
+            {
+              "name": "ens universaliter perfectum",
+              "readOnly": false,
+              "color": "#008080",
+              "notes": "",
+              "children": [
+              ]
+            },
+            {
+              "name": "ens perfectum in aliquo genere",
+              "readOnly": false,
+              "color": "#008080",
+              "notes": "",
+              "children": [
+              ]
+            }
+          ]
         },
         {
           "name": "ens imperfectum vel incompletum",
           "readOnly": false,
           "color": "#008080",
+          "notes": "",
+          "children": [
+            {
+              "name": "intentiones",
+              "readOnly": false,
+              "color": "#008080",
+              "notes": "",
+              "children": []
+            },
+            {
+              "name": "ens quod est in anima (ens diminutum) ",
+              "readOnly": false,
+              "color": "#008080",
+              "notes": "",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ex possessione esse",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens in anima",
+          "readOnly": false,
+          "color": "#ff00ff",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "ens naturale quod habet esse fixum in natura",
+          "readOnly": false,
+          "color": "#ebe333",
+          "notes": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "quo aliquid est",
+      "readOnly": false,
+      "color": "#dddddd",
+      "notes": "",
+      "children": [
+        {
+          "name": "ens subsistens (quod in se subsistit)",
+          "readOnly": false,
+          "color": "#ff00ff",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "principium subsistendi (ut forma)",
+          "readOnly": false,
+          "color": "#008000",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "dispositio subsistentis (ut qualitas)",
+          "readOnly": false,
+          "color": "#ff00ff",
+          "notes": "",
+          "children": []
+        },
+        {
+          "name": "privatio dispositionis subsistentis (ut caecitas)",
+          "readOnly": false,
+          "color": "#ff00ff",
           "notes": "",
           "children": []
         }
