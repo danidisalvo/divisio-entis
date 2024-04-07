@@ -201,14 +201,14 @@
                         {
                           "name": "ens sensibile",
                           "readOnly": false,
-                          "color": "#ff00ff",
+                          "color": "#ff0000",
                           "notes": "",
                           "children": []
                         },
                         {
                           "name": "ens intellectuale vel intelligibile vel intentionale",
                           "readOnly": false,
-                          "color": "#ff00ff",
+                          "color": "#ff0000",
                           "notes": "",
                           "children": []
                         }
@@ -264,7 +264,7 @@
           ]
         },
         {
-          "name": "ens as praedicatum",
+          "name": "ens ut praedicatum",
           "readOnly": false,
           "color": "#ff00ff",
           "notes": "",
@@ -388,14 +388,14 @@
                 {
                   "name": "novem categoriae",
                   "readOnly": false,
-                  "color": "#ff00ff",
+                  "color": "#febf00",
                   "notes": "exclusa substantia",
                   "children": []
                 },
                 {
                   "name": "proprietates substantiae",
                   "readOnly": false,
-                  "color": "#ff00ff",
+                  "color": "#febf00",
                   "notes": "",
                   "children": []
                 }
@@ -754,16 +754,14 @@
               "readOnly": false,
               "color": "#008080",
               "notes": "",
-              "children": [
-              ]
+              "children": []
             },
             {
               "name": "ens perfectum in aliquo genere",
               "readOnly": false,
               "color": "#008080",
               "notes": "",
-              "children": [
-              ]
+              "children": []
             }
           ]
         },

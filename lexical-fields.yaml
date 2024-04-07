@@ -3,12 +3,12 @@
 ##################
 
 accidentale-substantiale: &accidentale_substantiale
-  - praedicatum accidentale
-  - praedicatum substantiale
+  - praedicatum accidentale (in mente; ad quaestionem an est)
+  - praedicatum substantiale (in re; ad quaestionem quid est)
 
 aeternum-aeviternum: &aeternum_aeviternum
-  - aeternum
-  - aeviternum
+  - ens aeternum
+  - ens aeviternum
 
 causatum:
   - ens causatum
@@ -26,17 +26,21 @@ divinum:
   - ens divinum
   - ens naturale
 
-ens rationis:
+aliquid extra animam-nihil extra animam: &a_n_extra_animam
   - ens in mente
   - ens quod nihil habet extra animam
+
+ens reale-ens rationis:
+  - ens reale
+  - ens rationis: *a_n_extra_animam
 
 finitum:
   - ens finitum
   - ens infinitum
 
 in se-in alio: &in_se_in_alio
-  - in se
-  - in alio
+  - ens in se
+  - ens in alio
 
 intentiones-in anima: &intentiones_in_anima
   - intentiones
@@ -64,85 +68,82 @@ per essentia-per participationem:
 
 positivum-privatum: &positivum_privatum
   - ens positivum
-  - privatio
+  - privatio vel ens privatum
 
 sensibile-intellectuale: &sensibile_intellectuale
-  - sensibile
-  - intellectuale
+  - ens sensibile
+  - ens intellectuale vel intelligibile vel intentionale:
 
 separabile:
-  - separabile
-  - inseparabile
+  - ens separabile
+  - ens inseparabile
 
 simpliciter_secundum quid: &simpliciter_secundum_quid
-  - simpliciter:
-      - *in_se_in_alio
-  - secundum quid:
-      - *in_se_in_alio
+  - ens simpliciter: *in_se_in_alio
+  - ens secundum quid: *in_se_in_alio
 
 substantia-accidens: &substantia_accidens
-  - substantia
-  - accidens
+  - substantia vel ens per se
+  - accidens vel ens per aliud et in alio
 
-ens in re: &ens_in_re
-  - *sensibile_intellectuale
-  - *substantia_accidens
+ens in re vel extra animam vel perfectum: &ens_in_re
+  # aut - aut
+  alt1: *sensibile_intellectuale
+  alt2: *substantia_accidens
 
 temporale:
-  - temporale
-  - *aeternum_aeviternum
+  - ens temporale
+  - ens atemporale: *aeternum_aeviternum
 
 universaliter perfectum-perfectum in aliquo: &universaliter_perfectum
-  - universaliter perfectum
-  - perfectum in aliquo genere
+  - ens universaliter perfectum
+  - ens perfectum in aliquo genere
 
 perfectum: &perfectum
-  - *universaliter_perfectum
-  - *intentiones_in_anima
+  - ens perfectum vel completum vel fixum: *universaliter_perfectum
+  - ens imperfectum vel incompletum: *intentiones_in_anima
 
 completum: *perfectum
 
 fixum: *perfectum
 
 actus-potentia:
-  - in actu:
-      - *simpliciter_secundum_quid
-  - in potentia:
-      - *simpliciter_secundum_quid
+  - ens in actu: *simpliciter_secundum_quid
+  - ens in potentia: *simpliciter_secundum_quid
 
 ###################
 # gradual fields
 ###################
 
 certitudo:
-  - 1: mobile
-  - 2: quantum
-  - 3: indivisibile
-  - 4: simpliciter
+  - 1: ens mobile
+  - 2: ens quantum
+  - 3: ens indivisibile
+  - 4: ens simpliciter
 
 nobilitas entis:
-  - 1: ens sensibile
+  - 1: ens sensibile vel inseparabile
   - 2: ens rationale
-  - 3: ens intellectuale
+  - 3: ens intellectuale vel separabile
   - 4: simpliciter existentia
 
 plenitudo entis: &plenitudo_entis
   - 1: ens quod nihil habet extra animam
   - 2: ens in mente
-  - 3: *ens_in_re
+  - 3: { ens_in_re: *ens_in_re }
 
 quo aliquid est:
-  - 1: privatio dispositionis subsistentis
-  - 2: dispositio subsistentis
-  - 3: principium subsistendi
-  - 4: ens subsistens
+  - 1: privatio dispositionis subsistentis (ut caecitas)
+  - 2: dispositio subsistentis (ut qualitas)
+  - 3: principium subsistendi (ut forma)
+  - 4: ens subsistens (quod in se subsistit)
 
 ##########################
 # one more binary field
 ##########################
 
 per se-per accidens: &per_se_per_accidens
-  - ens per se: *plenitudo_entis
+  - ens per se vel in se: *plenitudo_entis
   - ens per accidens
 
 ##################
@@ -150,9 +151,9 @@ per se-per accidens: &per_se_per_accidens
 ##################
 
 praedicatio:
-  - *per_se_per_accidens
-  - *accidentale_substantiale
-  - *positivum_privatum
+  - praedicatio per se vel per accidens: *per_se_per_accidens
+  - ens ut praedicatum: *accidentale_substantiale
+  - ex positivitate: *positivum_privatum
 
 categoriae: &categoriae
   - proprietates substantiae
@@ -160,7 +161,7 @@ categoriae: &categoriae
 
 infimitas: &infimitas
   - negatio
-  - privatio
+  - privatio vel ens privatum
   - relatio
 
 mutatio: &mutatio
@@ -169,7 +170,7 @@ mutatio: &mutatio
   - motus
 
 unum-multa: &unum_multa
-  - unum
+  - unum vel ens indivisum
   - multa
 
 de ceteris-de transcendentibus: &de_ceteris_de_transcendentibus
@@ -187,18 +188,18 @@ perfectibile-corruptivus: &perfectibile_corruptivus
   - ens corruptivus
 
 bonum: &bonum
-  - perfectivum
-  - *perfectibile_corruptivus
+  - ens perfectivum
+  - ens non perfectivum: *perfectibile_corruptivus
 
 ens in ordine ad aliud: &ens_in_ordine_ad_aliud
   - aliquid
-  - *bonum
+  - bonum: *bonum
   - verum
 
-modus generalis consequens omne ens: &modus_generalis_consequens_omne_ens
+modus generalis consequens omne ens: &modus_generalis
   - ens in se: *de_ceteris_de_transcendentibus
   - *ens_in_ordine_ad_aliud
 
 modus:
-  - *modus_essendi
-  - *modus_generalis_consequens_omne_ens
+  - modus essendi: *modus_essendi
+  - modus generalis: *modus_generalis
