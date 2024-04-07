@@ -1,0 +1,204 @@
+##################
+# binary fields
+##################
+
+accidentale-substantiale: &accidentale_substantiale
+  - praedicatum accidentale
+  - praedicatum substantiale
+
+aeternum-aeviternum: &aeternum_aeviternum
+  - aeternum
+  - aeviternum
+
+causatum:
+  - ens causatum
+  - ens incausatum
+
+corruptibile:
+  - ens corruptibile
+  - ens incorruptibile
+
+creatum:
+  - ens creatum
+  - ens increatum
+
+divinum:
+  - ens divinum
+  - ens naturale
+
+ens rationis:
+  - ens in mente
+  - ens quod nihil habet extra animam
+
+finitum:
+  - ens finitum
+  - ens infinitum
+
+in se-in alio: &in_se_in_alio
+  - in se
+  - in alio
+
+intentiones-in anima: &intentiones_in_anima
+  - intentiones
+  - ens in anima
+
+mobile:
+  - ens mobile
+  - ens immobile
+
+mutabile:
+  - ens mutabile
+  - ens immutable
+
+naturale-in anima:
+  - ens naturale quod habet esse fixum in natura
+  - ens in anima
+
+necessarium-contingens:
+  - ens necessarium
+  - ens contingens
+
+per essentia-per participationem:
+  - ens per essentia
+  - ens per participationem
+
+positivum-privatum: &positivum_privatum
+  - ens positivum
+  - privatio
+
+sensibile-intellectuale: &sensibile_intellectuale
+  - sensibile
+  - intellectuale
+
+separabile:
+  - separabile
+  - inseparabile
+
+simpliciter_secundum quid: &simpliciter_secundum_quid
+  - simpliciter:
+      - *in_se_in_alio
+  - secundum quid:
+      - *in_se_in_alio
+
+substantia-accidens: &substantia_accidens
+  - substantia
+  - accidens
+
+ens in re: &ens_in_re
+  - *sensibile_intellectuale
+  - *substantia_accidens
+
+temporale:
+  - temporale
+  - *aeternum_aeviternum
+
+universaliter perfectum-perfectum in aliquo: &universaliter_perfectum
+  - universaliter perfectum
+  - perfectum in aliquo genere
+
+perfectum: &perfectum
+  - *universaliter_perfectum
+  - *intentiones_in_anima
+
+completum: *perfectum
+
+fixum: *perfectum
+
+actus-potentia:
+  - in actu:
+      - *simpliciter_secundum_quid
+  - in potentia:
+      - *simpliciter_secundum_quid
+
+###################
+# gradual fields
+###################
+
+certitudo:
+  - 1: mobile
+  - 2: quantum
+  - 3: indivisibile
+  - 4: simpliciter
+
+nobilitas entis:
+  - 1: ens sensibile
+  - 2: ens rationale
+  - 3: ens intellectuale
+  - 4: simpliciter existentia
+
+plenitudo entis: &plenitudo_entis
+  - 1: ens quod nihil habet extra animam
+  - 2: ens in mente
+  - 3: *ens_in_re
+
+quo aliquid est:
+  - 1: privatio dispositionis subsistentis
+  - 2: dispositio subsistentis
+  - 3: principium subsistendi
+  - 4: ens subsistens
+
+##########################
+# one more binary field
+##########################
+
+per se-per accidens: &per_se_per_accidens
+  - ens per se: *plenitudo_entis
+  - ens per accidens
+
+##################
+# scalar fields
+##################
+
+praedicatio:
+  - *per_se_per_accidens
+  - *accidentale_substantiale
+  - *positivum_privatum
+
+categoriae: &categoriae
+  - proprietates substantiae
+  - novem categoriae
+
+infimitas: &infimitas
+  - negatio
+  - privatio
+  - relatio
+
+mutatio: &mutatio
+  - generatio
+  - corruptio
+  - motus
+
+unum-multa: &unum_multa
+  - unum
+  - multa
+
+de ceteris-de transcendentibus: &de_ceteris_de_transcendentibus
+  - de ceteris
+  - de transcendentibus: *unum_multa
+
+modus essendi: &modus_essendi
+  - 1: { ens debilissimus: *infimitas }
+  - 2: { ex mutatione: *mutatio }
+  - 3: { ens debile: *categoriae }
+  - 4: { ens perfectissimum: substantia }
+
+perfectibile-corruptivus: &perfectibile_corruptivus
+  - ens perfectibile
+  - ens corruptivus
+
+bonum: &bonum
+  - perfectivum
+  - *perfectibile_corruptivus
+
+ens in ordine ad aliud: &ens_in_ordine_ad_aliud
+  - aliquid
+  - *bonum
+  - verum
+
+modus generalis consequens omne ens: &modus_generalis_consequens_omne_ens
+  - ens in se: *de_ceteris_de_transcendentibus
+  - *ens_in_ordine_ad_aliud
+
+modus:
+  - *modus_essendi
+  - *modus_generalis_consequens_omne_ens
