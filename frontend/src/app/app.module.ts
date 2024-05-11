@@ -25,6 +25,7 @@ import {GraphComponent} from './graph/graph.component';
 import {HelpPageComponent} from './help-page/help-page.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {NgModule} from "@angular/core";
 
 @NgModule({
   declarations: [
