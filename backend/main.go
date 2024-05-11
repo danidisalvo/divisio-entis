@@ -47,6 +47,7 @@ func (g *Graph) graph(context *gin.Context) {
 // graph deletes the graph
 func (g *Graph) deleteGraph(context *gin.Context) {
 	g.root = NewGraph().root
+	context.Writer.WriteHeader(http.StatusNoContent)
 }
 
 // addChildToRootNode adds a child to the root node

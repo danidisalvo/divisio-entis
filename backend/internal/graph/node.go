@@ -3,6 +3,7 @@ package graph
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/google/uuid"
 )
 
 const (
@@ -84,6 +85,7 @@ func (n *Node) Parse(bytes []byte) (*Node, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse the node [%s]", err)
 	}
+	n.Traverse() // TODO
 	return n, nil
 }
 
@@ -208,6 +210,12 @@ func (n *Node) Traverse() []*Node {
 func traverse(node *Node, traversed []*Node) []*Node {
 	traversed = append(traversed, node)
 	for _, child := range node.Children {
+		if child.Id == "" {
+			child.Id = uuid.New().String()
+		}
+		if child.Type == "" {
+			child.Type = LEXEME
+		}
 		traversed = traverse(child, traversed)
 	}
 	return traversed

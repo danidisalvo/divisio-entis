@@ -1,2 +1,6 @@
 <h3 *ngIf="message">{{ message }}</h3>
-<a *ngIf="safeUrl" [href]="safeUrl" download="graph.json">Download</a>
+<div class="flex-container">
+  <a *ngIf="jsonSafeUrl" [href]="jsonSafeUrl" download="graph.json">Download as JSON</a>
+  &nbsp;
+  <a *ngIf="jsonSafeUrl" [href]="jsonSafeUrl" download="graph.txt">Download as text</a>
+</div>
