@@ -1,4 +1,3 @@
-import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -12,6 +11,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from "@angular/material/select";
+import {MatSliderModule} from "@angular/material/slider";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS} from '@angular-material-components/color-picker';
@@ -53,6 +53,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     MatListModule,
     MatMenuModule,
     MatSelectModule,
+    MatSliderModule,
     MatSlideToggleModule,
     MatToolbarModule,
     NgxMatColorPickerModule,

@@ -18,19 +18,18 @@ const (
 )
 
 func TestNewNode_Success(t *testing.T) {
-	node, err := NewNode("new node", true, "", "some stuff")
+	node, err := NewLexeme("new node", "new node", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	if node.Name != "new node" || !node.ReadOnly ||
-		node.Color != defaultColor || node.Notes != "some stuff" {
+	if node.Name != "new node" || node.Color != defaultColor {
 		t.Errorf("Expected {\"new node\", true, 'default color', \"some stuff\"}, got %v", node)
 	}
 }
 
 func TestNewNode_Fails(t *testing.T) {
-	_, err := NewNode("", true, "", "")
+	_, err := NewLexeme("id", "", "")
 	if err == nil {
 		t.Errorf("NewNode did not return an error")
 		return
@@ -55,7 +54,7 @@ func TestNode_String(t *testing.T) {
 }
 
 func TestNode_Parse_Success(t *testing.T) {
-	root, err := NewNode("root", true, "", "")
+	root, err := NewLexeme("root", "root", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -83,13 +82,13 @@ func TestNode_FindNode_Success(t *testing.T) {
 		return
 	}
 
-	expected, err := NewNode("F", false, blu, "notes F")
+	expected, err := NewLexeme("id_F", "F", blu)
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
 
-	actual, err := root.FindNode("F")
+	actual, err := root.FindNode("id_F")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -99,7 +98,7 @@ func TestNode_FindNode_Success(t *testing.T) {
 	}
 }
 
-func TestNode_FindNode_NameIsEmpty(t *testing.T) {
+func TestNode_FindNode_IdIsEmpty(t *testing.T) {
 	root, _, err := provisionNodes()
 	if err != nil {
 		t.Errorf(err.Error())
@@ -111,8 +110,8 @@ func TestNode_FindNode_NameIsEmpty(t *testing.T) {
 		t.Errorf("FindNode did not return an error")
 		return
 	}
-	if err.Error() != "name cannot be empty" {
-		t.Errorf("The error message does not match. Expected \"name cannot be empty\", got %s", err)
+	if err.Error() != "id cannot be empty" {
+		t.Errorf("The error message does not match. Expected \"id cannot be empty\", got %s", err)
 	}
 }
 
@@ -128,8 +127,8 @@ func TestNode_FindNode_NotFound(t *testing.T) {
 		t.Errorf("FindNode did not return an error")
 		return
 	}
-	if err.Error() != "the node \"Z\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the node \"Z\" was not found\", got %s", err)
+	if err.Error() != "the node with ID \"Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the node with ID \"Z\" was not found\", got %s", err)
 	}
 }
 
@@ -139,17 +138,17 @@ func TestNode_AddNode_Success(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("K", false, "", "")
+	node, err := NewLexeme("id_K", "K", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	root, err = root.AddNode("F", node)
+	root, err = root.AddNode("id_F", node)
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	found, err := root.FindNode("F")
+	found, err := root.FindNode("id_F")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -181,7 +180,7 @@ func TestNode_AddNode_FailsNameIsNotUnique(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("K", false, "", "")
+	node, err := NewLexeme("K", "K", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -202,18 +201,18 @@ func TestNode_AddNode_FailsParentNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	node, err := NewNode("G", false, "", "")
+	node, err := NewLexeme("id_G", "G", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	_, err = root.AddNode("B", node)
+	_, err = root.AddNode("0", node)
 	if err == nil {
 		t.Errorf("AddNode did not return an error")
 		return
 	}
-	if err.Error() != "duplicated name \"G\"" {
-		t.Errorf("The error message does not match. Expected \"duplicated name \"G\"\", got %s", err)
+	if err.Error() != "duplicated ID \"id_G\"" {
+		t.Errorf("The error message does not match. Expected \"duplicated ID \"id_G\"\", got %s", err)
 	}
 }
 
@@ -223,18 +222,18 @@ func TestNode_RemoveNode_Success(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	root, err = root.RemoveNode("D", "F")
+	root, err = root.RemoveNode("id_D", "id_F")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	_, err = root.FindNode("F")
+	_, err = root.FindNode("id_F")
 	if err == nil {
 		t.Errorf("FindNode did not return an error")
 		return
 	}
-	if err.Error() != "the node \"F\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the node \"F\" was not found\", got %s", err)
+	if err.Error() != "the node with ID \"id_F\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the node with ID \"id_F\" was not found\", got %s", err)
 	}
 }
 
@@ -244,13 +243,13 @@ func TestNode_RemoveNode_FailsTargetNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	_, err = root.RemoveNode("D", "Z")
+	_, err = root.RemoveNode("id_D", "Z")
 	if err == nil {
 		t.Errorf("RemoveNode did not return an error")
 		return
 	}
-	if err.Error() != "the target node \"Z\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the target node \"Z\" was not found\", got %s", err)
+	if err.Error() != "the target node with ID \"Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the target node with ID \"Z\" was not found\", got %s", err)
 	}
 }
 
@@ -265,8 +264,8 @@ func TestNode_RemoveNode_FailsParentNotFound(t *testing.T) {
 		t.Errorf("RemoveNode did not return an error")
 		return
 	}
-	if err.Error() != "the parent node \"Z\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the parent node \"Z\" was not found\", got %s", err)
+	if err.Error() != "the parent node with ID \"Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the parent node with ID \"Z\" was not found\", got %s", err)
 	}
 }
 
@@ -276,17 +275,17 @@ func TestNode_UpdateNode_Success(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("F", false, "", "bla bla bla")
+	targetNode, err := NewLexeme("id_F", "F", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	root, err = root.UpdateNode("D", targetNode)
+	root, err = root.UpdateNode("id_D", targetNode)
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	found, err := root.FindNode("F")
+	found, err := root.FindNode("id_F")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
@@ -302,18 +301,18 @@ func TestNode_UpdateNode_FailsTargetNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("Z", false, "", "")
+	targetNode, err := NewLexeme("id_Z", "Z", "")
 	if err != nil {
 		t.Errorf(err.Error())
 		return
 	}
-	_, err = root.UpdateNode("D", targetNode)
+	_, err = root.UpdateNode("id_D", targetNode)
 	if err == nil {
 		t.Errorf("UpdateNode did not return an error")
 		return
 	}
-	if err.Error() != "the target node \"Z\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the target node \"Z\" was not found\", got %s", err)
+	if err.Error() != "the target node with ID \"id_Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the target node with ID \"id_Z\" was not found\", got %s", err)
 	}
 }
 
@@ -323,14 +322,14 @@ func TestNode_UpdateNode_FailsParentNotFound(t *testing.T) {
 		t.Errorf(err.Error())
 		return
 	}
-	targetNode, err := NewNode("F", false, "", "")
+	targetNode, err := NewLexeme("F", "F", "")
 	_, err = root.UpdateNode("Z", targetNode)
 	if err == nil {
 		t.Errorf("UpdateNode did not return an error")
 		return
 	}
-	if err.Error() != "the parent node \"Z\" was not found" {
-		t.Errorf("The error message does not match. Expected \"the parent node \"Z\" was not found\", got %s", err)
+	if err.Error() != "the parent node with ID \"Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the parent node with ID \"Z\" was not found\", got %s", err)
 	}
 }
 
@@ -346,46 +345,48 @@ func TestNode_Traverse_Success(t *testing.T) {
 }
 
 func provisionNodes() (*Node, []*Node, error) {
-	node, err := NewNode("ens", false, "", "")
+	node, err := NewLexeme("id_ens", "ens", "")
+	node.SetProperty("p1", "abc")
+	node.SetProperty("p2", "xyz")
 	if err != nil {
 		return nil, nil, err
 	}
-	b, err := NewNode("B", false, red, "notes B")
+	b, err := NewLexeme("id_B", "B", red)
 	if err != nil {
 	}
 	node.Children = append(node.Children, b)
 
-	c, err := NewNode("C", false, red, "notes C")
+	c, err := NewLexeme("id_C", "C", red)
 	if err != nil {
 	}
 	node.Children = append(node.Children, c)
 
-	d, err := NewNode("D", false, green, "notes D")
+	d, err := NewOpposition("id_D", "D", green)
 	if err != nil {
 	}
 	node.Children = append(node.Children, d)
 
-	e, err := NewNode("E", false, green, "notes E")
+	e, err := NewLexeme("id_E", "E", green)
 	if err != nil {
 	}
 	node.Children = append(node.Children, e)
 
-	f, err := NewNode("F", false, blu, "notes F")
+	f, err := NewLexeme("id_F", "F", blu)
 	if err != nil {
 	}
 	d.Children = append(d.Children, f)
 
-	g, err := NewNode("G", false, blu, "notes G")
+	g, err := NewLexeme("id_G", "G", blu)
 	if err != nil {
 	}
 	d.Children = append(d.Children, g)
 
-	h, err := NewNode("H", false, yellow, "notes H")
+	h, err := NewDivision("id_H", "H", yellow)
 	if err != nil {
 	}
 	g.Children = append(g.Children, h)
 
-	i, err := NewNode("I", false, yellow, "notes I")
+	i, err := NewLexeme("id_I", "I", yellow)
 	if err != nil {
 	}
 	g.Children = append(g.Children, i)

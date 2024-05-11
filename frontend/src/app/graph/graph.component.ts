@@ -7,13 +7,16 @@ import {EditNodeDialogComponent} from "../edit-node-dialog/edit-node-dialog.comp
 import {environment} from '../../environments/environment';
 
 import * as d3 from 'd3';
-import { v4 as uuidv4 } from 'uuid';
+
+type Properties = {
+  [key: string]: string;
+};
 
 interface Node {
+  id: string,
   name: string;
-  readOnly: boolean,
   color: Color,
-  notes: string
+  properties: Properties,
   children?: Array<Node>
 }
 
@@ -22,20 +25,23 @@ interface Node {
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.css']
 })
-export class GraphComponent implements OnInit {
 
+export class GraphComponent implements OnInit {
   private dialogWidth = '500px';
   private nodeRadius = 10
   private pathStrokeWidth = 2;
   private strokeColor = '#98989C';
-  private margin = {top: 20, right: 50, bottom: 20, left: 50};
-  private height = 1920 * 2 - this.margin.top - this.margin.bottom;
-  private width = 1920 * 2- this.margin.left - this.margin.right;
   private transitionDuration = 750;
 
+  private cachedData: any
+
   message!: string | null;
+  hzoom: number
+  vzoom: number
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
+    this.hzoom = 50
+    this.vzoom = 50
   }
 
   ngOnInit(): void {
@@ -43,7 +49,8 @@ export class GraphComponent implements OnInit {
     this.http.get<Node>(url + "graph").subscribe({
       next: data => {
         this.message = null;
-        this.drawTree(data);
+        this.cachedData = data;
+        this.drawTree();
       },
       error: error => {
         this.message = error.error.status + ': ' + error.error.message;
@@ -51,23 +58,29 @@ export class GraphComponent implements OnInit {
     });
   }
 
-  private drawTree(treeData: any) {
+  public drawTree() {
     // create the nested data structure representing the tree
-    const treeDataStructure: any = d3.hierarchy(treeData, (d: any) => {
+    const treeDataStructure: any = d3.hierarchy(this.cachedData, (d: any) => {
       return d.children;
     });
-    treeDataStructure.x0 = this.height / 2;
+    treeDataStructure.x0 = window.screen.height / 2;
     treeDataStructure.y0 = 0;
 
+    const hZoomFactor = this.hzoom / 50;
+    const vZoomFactor = this.vzoom / 50;
     // set the svg attributes
-    const svg = d3.select('svg')
-      .attr('width', this.width + this.margin.right + this.margin.left)
-      .attr('height', this.height + this.margin.top + this.margin.bottom)
-      .append('g')
-      .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')');
+    d3.select("div#container").select("svg").remove();
+
+    const svg = d3.select("div#container")
+      .append("svg")
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      // .attr("viewBox", "-50 -50 " + window.screen.width * 0.90 + " " + window.screen.height * 2.0)
+      .attr("viewBox", "-50 -50 " + window.screen.width * hZoomFactor + " " + window.screen.height * vZoomFactor)
+      .classed("svg-content", true)
+      .append('g');
 
     // create and configure the tree layout
-    const treeLayout = d3.tree().size([this.height, this.width]);
+    const treeLayout = d3.tree().size([window.screen.width, window.screen.height]);
 
     // see https://stackoverflow.com/questions/63157253/how-to-initialize-a-angular-material-components-color-picker-side-ts-with-stri
     const hexToRgb = (hex: string) => {
@@ -93,17 +106,17 @@ export class GraphComponent implements OnInit {
       const rbg = hexToRgb(d.data.color);
 
       const node: Node = {
+        id: d.data.id,
         name: d.data.name,
-        readOnly: d.data.readOnly,
         color: rbg == null ? new Color(0, 0, 0) : new Color(rbg.r, rbg.g, rbg.b),
-        notes: d.data.notes
+        properties: d.data.properties
       }
 
       const child: Node = {
+        id: '',
         name: '',
-        readOnly: false,
-        color: new Color(0, 0, 0),
-        notes: ''
+        color: rbg == null ? new Color(0, 0, 0) : new Color(rbg.r, rbg.g, rbg.b),
+        properties: d.data.properties
       }
 
       this.dialog.open(EditNodeDialogComponent, {
@@ -122,27 +135,27 @@ export class GraphComponent implements OnInit {
           let body: Node;
           if (result.d.parent == null) { // if parent is null, we can only create a child
             body = {
+              id: result.child.id,
               name: result.child.name,
-              readOnly: false,
               color: result.child.color.toHexString(),
-              notes: result.child.notes,
+              properties: result.child.properties,
               children: []
             }
           } else { // if parent is *not* null we can: a) amend the parent itself; and/or create a child
             url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.name;
             body = { // the parent is *not* the root node
+              id: result.node.id,
               name: result.node.name,
-              readOnly: result.node.readOnly,
               color: result.node.color.toHexString(),
-              notes: result.node.notes,
+              properties: result.child.properties,
               children: []
             }
             if (result.addChild) {
               body.children?.push({
+                id: result.child.id,
                 name: result.child.name,
-                readOnly: false,
                 color: result.child.color.toHexString(),
-                notes: result.child.notes,
+                properties: result.child.properties,
                 children: []
               })
             }
@@ -158,7 +171,6 @@ export class GraphComponent implements OnInit {
 
               // amend the current node
               result.d.data.color = result.node.color.toHexString();
-              result.d.data.notes = result.node.notes;
 
               // add a child
               if (result.addChild) {
@@ -172,17 +184,16 @@ export class GraphComponent implements OnInit {
                   result.d.children = [];
                 }
                 const child = {
-                  id: uuidv4(),
                   depth: result.d.depth + 1,
                   height: 0,
                   children: null,
                   _children: null,
                   parent: result.d,
                   data: {
+                    id: result.child.id,
                     name: result.child.name,
                     color: result.child.color.toHexString(),
-                    notes: result.child.notes,
-                    readOnly: false,
+                    properties: result.child.properties,
                     children: []
                   }
                 };
@@ -216,7 +227,7 @@ export class GraphComponent implements OnInit {
         }
       }).afterClosed().subscribe((result: any) => {
         if (result != undefined && result.action == 'yes') {
-          const url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.name + '/' + result.d.data.name;
+          const url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.id + '/' + result.d.data.id;
           this.http.delete(url).subscribe({
             next: () => {
               this.message = null;

@@ -13,7 +13,6 @@ import (
 const (
 	applicationJson = "application/json"
 	contentType     = "Content-Type"
-	ens             = "ens"
 	maxMem          = 1 << 16
 	uploadFailed    = "Upload failed [%s]"
 )
@@ -25,7 +24,7 @@ type Graph struct {
 
 // NewGraph create a new graph
 func NewGraph() *Graph {
-	root, err := graph.NewNode(ens, true, "", "")
+	root, err := graph.NewLexeme("0", "ens", "")
 	if err != nil {
 		log.Fatalf("Failed to create the root node [%v]", err)
 	}
@@ -55,7 +54,7 @@ func (g *Graph) addChildToRootNode(context *gin.Context) {
 		handleFailedRequest(context, http.StatusBadRequest, msg)
 		return
 	}
-	root, err := g.root.AddNode(ens, node)
+	root, err := g.root.AddNode("0", node)
 	if err != nil {
 		msg := fmt.Sprintf("Failed to add the node to the graph's root [%s]", err)
 		log.Error(msg)

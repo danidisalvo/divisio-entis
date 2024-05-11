@@ -5,19 +5,45 @@ import (
 	"fmt"
 )
 
-const defaultColor = "#dddddd"
+const (
+	defaultColor = "#dddddd"
+	DIVISION     = NodeType("DIVISION")
+	LEXEME       = NodeType("LEXEME")
+	OPPOSITION   = NodeType("OPPOSITION")
+)
+
+type NodeType string
 
 // Node represents a node of a graph which can be traversed using the Depth-First Search algorithm
 type Node struct {
-	Name     string  `json:"name"`
-	ReadOnly bool    `json:"readOnly"`
-	Color    string  `json:"color"`
-	Notes    string  `json:"notes"`
-	Children []*Node `json:"children"`
+	Id         string            `json:"id"`
+	Name       string            `json:"name"`
+	Type       NodeType          `json:"type"`
+	Color      string            `json:"color"`
+	Properties map[string]string `json:"properties"`
+	Children   []*Node           `json:"children"`
+}
+
+// NewDivision creates a new DIVISION node
+func NewDivision(id, name, color string) (*Node, error) {
+	return newNode(id, name, color, DIVISION)
+}
+
+// NewLexeme creates a new LEXEME node
+func NewLexeme(id, name, color string) (*Node, error) {
+	return newNode(id, name, color, LEXEME)
+}
+
+// NewOpposition creates a new OPPOSITION node
+func NewOpposition(id, name, color string) (*Node, error) {
+	return newNode(id, name, color, OPPOSITION)
 }
 
 // NewNode creates a new node
-func NewNode(name string, readOnly bool, color, notes string) (*Node, error) {
+func newNode(id, name, color string, nodeType NodeType) (*Node, error) {
+	if id == "" {
+		return nil, fmt.Errorf("id cannot be empty")
+	}
 	if name == "" {
 		return nil, fmt.Errorf("name cannot be empty")
 	}
@@ -25,10 +51,11 @@ func NewNode(name string, readOnly bool, color, notes string) (*Node, error) {
 		color = defaultColor
 	}
 	return &Node{
-		Name:     name,
-		ReadOnly: readOnly,
-		Color:    color,
-		Notes:    notes,
+		Id:         id,
+		Name:       name,
+		Color:      color,
+		Type:       nodeType,
+		Properties: make(map[string]string),
 	}, nil
 }
 
@@ -41,25 +68,36 @@ func (n *Node) String() (string, error) {
 	return string(bytes), nil
 }
 
+// GetProperty returns a property
+func (n *Node) GetProperty(name string) string {
+	return n.Properties[name]
+}
+
+// SetProperty sets a new property
+func (n *Node) SetProperty(name, value string) {
+	n.Properties[name] = value
+}
+
+// Parse parses a node's JSON representation
 func (n *Node) Parse(bytes []byte) (*Node, error) {
 	err := json.Unmarshal(bytes, n)
 	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal the node [%s]", err)
+		return nil, fmt.Errorf("failed to parse the node [%s]", err)
 	}
 	return n, nil
 }
 
-// FindNode returns the node with the given name
-func (n *Node) FindNode(name string) (*Node, error) {
-	if name == "" {
-		return nil, fmt.Errorf("name cannot be empty")
+// FindNode returns the node with the given id
+func (n *Node) FindNode(id string) (*Node, error) {
+	if id == "" {
+		return nil, fmt.Errorf("id cannot be empty")
 	}
 	for _, node := range n.Traverse() {
-		if node.Name == name {
+		if node.Id == id {
 			return node, nil
 		}
 	}
-	return nil, fmt.Errorf("the node %q was not found", name)
+	return nil, fmt.Errorf("the node with ID %q was not found", id)
 }
 
 // AddNode adds a node to the graph
@@ -67,16 +105,16 @@ func (n *Node) AddNode(parent string, newNode *Node) (*Node, error) {
 	if newNode == nil {
 		return nil, fmt.Errorf("newNode cannot be nil")
 	}
-	// the name must be unique
+	// the id must be unique
 	for _, node := range n.Traverse() {
-		if node.Name == newNode.Name {
-			return nil, fmt.Errorf("duplicated name %q", newNode.Name)
+		if node.Id == newNode.Id {
+			return nil, fmt.Errorf("duplicated ID %q", newNode.Id)
 		}
 	}
 
 	nodes := n.Traverse()
 	for i, node := range nodes {
-		if node.Name == parent {
+		if node.Id == parent {
 			node.Children = append(node.Children, newNode)
 			nodes[i] = node
 			return n, nil
@@ -85,17 +123,17 @@ func (n *Node) AddNode(parent string, newNode *Node) (*Node, error) {
 	return nil, fmt.Errorf("parent %q not found", parent)
 }
 
-// RemoveNode removes a node to the graph
+// RemoveNode removes a node from the graph
 func (n *Node) RemoveNode(parent, target string) (*Node, error) {
 	parentFound := false
 	targetFound := false
 	nodes := n.Traverse()
 	for i, parentNode := range nodes {
-		if parentNode.Name == parent {
+		if parentNode.Id == parent {
 			parentFound = true
 			children := make([]*Node, 0)
 			for _, child := range parentNode.Children {
-				if child.Name == target {
+				if child.Id == target {
 					targetFound = true
 				} else {
 					children = append(children, child)
@@ -106,10 +144,10 @@ func (n *Node) RemoveNode(parent, target string) (*Node, error) {
 		}
 	}
 	if !parentFound {
-		return nil, fmt.Errorf("the parent node %q was not found", parent)
+		return nil, fmt.Errorf("the parent node with ID %q was not found", parent)
 	}
 	if !targetFound {
-		return nil, fmt.Errorf("the target node %q was not found", target)
+		return nil, fmt.Errorf("the target node with ID %q was not found", target)
 	}
 	return n, nil
 }
@@ -119,29 +157,29 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 	if targetNode == nil {
 		return nil, fmt.Errorf("targetNode cannot be nil")
 	}
+
 	parentFound := false
 	targetFound := false
 	nodes := n.Traverse()
 	for _, parentNode := range nodes {
-		if parentNode.Name == parent {
+		if parentNode.Id == parent {
 			parentFound = true
 			for _, child := range parentNode.Children {
-				if child.Name == targetNode.Name {
+				if child.Id == targetNode.Id {
 					targetFound = true
-					child.ReadOnly = targetNode.ReadOnly
 					if targetNode.Color == "" {
 						child.Color = defaultColor
 					} else {
 						child.Color = targetNode.Color
 					}
-					child.Notes = targetNode.Notes
+					child.Properties = targetNode.Properties
 					if targetNode.Children != nil && len(targetNode.Children) > 0 {
 						// there should be only one child
 						newChild := targetNode.Children[0]
-						// the name must be unique
+						// the id must be unique
 						for _, node := range nodes {
-							if node.Name == newChild.Name {
-								return nil, fmt.Errorf("duplicated name %q", newChild.Name)
+							if node.Id == newChild.Id {
+								return nil, fmt.Errorf("duplicated ID %q", newChild.Id)
 							}
 						}
 						child.Children = append(child.Children, newChild)
@@ -151,10 +189,10 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 		}
 	}
 	if !parentFound {
-		return nil, fmt.Errorf("the parent node %q was not found", parent)
+		return nil, fmt.Errorf("the parent node with ID %q was not found", parent)
 	}
 	if !targetFound {
-		return nil, fmt.Errorf("the target node %q was not found", targetNode.Name)
+		return nil, fmt.Errorf("the target node with ID %q was not found", targetNode.Id)
 	}
 	return n, nil
 }

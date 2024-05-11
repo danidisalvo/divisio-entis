@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms'
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-edit-node-dialog',
@@ -11,18 +12,16 @@ export class EditNodeDialogComponent {
 
   form = this.fb.group({
     color: [
-      {value: this.data.node.color, disabled: this.data.node.readOnly},
+      {value: this.data.node.color, disabled: false},
       [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
-    ],
-    notes: [
-      {value: this.data.node.notes, disabled: this.data.node.readOnly},
-      [Validators.maxLength(512)]
     ],
     addChild: [false],
     child: this.fb.group({
       name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(32)]],
-      color: ['', [Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]],
-      notes: ['', [Validators.maxLength(512)]]
+      color: [
+        {value: this.data.node.color, disabled: false},
+        [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
+      ],
     })
   });
 
@@ -36,15 +35,16 @@ export class EditNodeDialogComponent {
       action: 'save',
       d: this.data.d,
       node: {
+        id: this.data.node.id,
         name: this.data.node.name,
         color: this.form.controls['color'].value,
-        notes: this.form.controls['notes'].value,
         children: []
       },
       child: {
+        id: uuidv4(),
         name: this.form.controls['child'].controls['name'].value,
         color: this.form.controls['child'].controls['color'].value,
-        notes: this.form.controls['child'].controls['notes'].value,
+        properties: {},
         children: []
       },
       addChild: this.hasChild()
@@ -64,6 +64,6 @@ export class EditNodeDialogComponent {
   }
 
   public isSavedEnabled() {
-    return this.form.valid && (this.hasChild() && this.data.node.readOnly || !this.data.node.readOnly);
+    return this.form.valid && (this.hasChild());
   }
 }

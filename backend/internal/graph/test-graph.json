@@ -1,54 +1,65 @@
 {
+  "id": "id_ens",
   "name": "ens",
-  "readOnly": false,
   "color": "#dddddd",
-  "notes": "",
+  "type": "LEXEME",
+  "properties": {
+    "p1": "abc",
+    "p2": "xyz"
+  },
   "children": [
     {
+      "id": "id_B",
       "name": "B",
-      "readOnly": false,
       "color": "#ff0000",
-      "notes": "notes B",
+      "type": "LEXEME",
+      "properties": {},
       "children": null
     },
     {
+      "id": "id_C",
       "name": "C",
-      "readOnly": false,
       "color": "#ff0000",
-      "notes": "notes C",
+      "type": "LEXEME",
+      "properties": {},
       "children": null
     },
     {
+      "id": "id_D",
       "name": "D",
-      "readOnly": false,
       "color": "#00ff00",
-      "notes": "notes D",
+      "type": "OPPOSITION",
+      "properties": {},
       "children": [
         {
+          "id": "id_F",
           "name": "F",
-          "readOnly": false,
           "color": "#0000ff",
-          "notes": "notes F",
+          "type": "LEXEME",
+          "properties": {},
           "children": null
         },
         {
+          "id": "id_G",
           "name": "G",
-          "readOnly": false,
           "color": "#0000ff",
-          "notes": "notes G",
+          "type": "LEXEME",
+          "properties": {},
           "children": [
             {
+              "id": "id_H",
               "name": "H",
-              "readOnly": false,
               "color": "#00ffff",
-              "notes": "notes H",
+              "type": "DIVISION",
+              "properties": {},
               "children": null
             },
             {
+              "id": "id_I",
               "name": "I",
-              "readOnly": false,
               "color": "#00ffff",
-              "notes": "notes I",
+              "type": "LEXEME",
+              "properties": {},
               "children": null
             }
           ]
@@ -56,10 +67,11 @@
       ]
     },
     {
+      "id": "id_E",
       "name": "E",
-      "readOnly": false,
       "color": "#00ff00",
-      "notes": "notes E",
+      "type": "LEXEME",
+      "properties": {},
       "children": null
     }
   ]

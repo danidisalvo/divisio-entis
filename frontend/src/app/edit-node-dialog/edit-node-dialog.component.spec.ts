@@ -24,15 +24,11 @@ describe('EditNodeDialogComponent', () => {
           useValue: {
             node: {
               name: 'name',
-              readOnly: false,
               color: new Color(0, 0, 0),
-              notes: 'notes'
             },
             child: {
               name: '',
-              readOnly: false,
               color: new Color(0, 0, 0),
-              notes: ''
             },
             addChild: false
           }
