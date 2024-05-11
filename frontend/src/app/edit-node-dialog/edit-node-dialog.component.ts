@@ -22,6 +22,7 @@ export class EditNodeDialogComponent {
         {value: this.data.node.color, disabled: false},
         [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
       ],
+      type: ['lexeme']
     })
   });
 
@@ -38,12 +39,15 @@ export class EditNodeDialogComponent {
         id: this.data.node.id,
         name: this.data.node.name,
         color: this.form.controls['color'].value,
+        type: this.data.node.type,
+        properties: this.data.node.properties,
         children: []
       },
       child: {
         id: uuidv4(),
         name: this.form.controls['child'].controls['name'].value,
         color: this.form.controls['child'].controls['color'].value,
+        type: this.form.controls['child'].controls['type'].value,
         properties: {},
         children: []
       },

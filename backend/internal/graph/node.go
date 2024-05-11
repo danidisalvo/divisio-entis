@@ -7,9 +7,9 @@ import (
 
 const (
 	defaultColor = "#dddddd"
-	DIVISION     = NodeType("DIVISION")
-	LEXEME       = NodeType("LEXEME")
-	OPPOSITION   = NodeType("OPPOSITION")
+	DIVISION     = NodeType("division")
+	LEXEME       = NodeType("lexeme")
+	OPPOSITION   = NodeType("opposition")
 )
 
 type NodeType string

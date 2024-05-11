@@ -44,6 +44,11 @@ func (g *Graph) graph(context *gin.Context) {
 	context.String(http.StatusOK, json)
 }
 
+// graph deletes the graph
+func (g *Graph) deleteGraph(context *gin.Context) {
+	g.root = NewGraph().root
+}
+
 // addChildToRootNode adds a child to the root node
 func (g *Graph) addChildToRootNode(context *gin.Context) {
 	node := &graph.Node{}
@@ -162,6 +167,7 @@ func main() {
 	router.Use(cors.Default())
 
 	router.GET("/apis", healthCheck)
+	router.DELETE("/apis/graph", g.deleteGraph)
 	router.GET("/apis/graph", g.graph)
 	router.GET("/apis/health", healthCheck)
 	router.PUT("/apis/nodes", g.addChildToRootNode)

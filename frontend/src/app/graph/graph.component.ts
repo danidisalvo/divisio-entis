@@ -17,6 +17,7 @@ interface Node {
   name: string;
   color: Color,
   properties: Properties,
+  type: string
   children?: Array<Node>
 }
 
@@ -33,8 +34,6 @@ export class GraphComponent implements OnInit {
   private strokeColor = '#98989C';
   private transitionDuration = 750;
 
-  private cachedData: any
-
   message!: string | null;
   hzoom: number
   vzoom: number
@@ -49,8 +48,7 @@ export class GraphComponent implements OnInit {
     this.http.get<Node>(url + "graph").subscribe({
       next: data => {
         this.message = null;
-        this.cachedData = data;
-        this.drawTree();
+        this.drawTree(data);
       },
       error: error => {
         this.message = error.error.status + ': ' + error.error.message;
@@ -58,9 +56,41 @@ export class GraphComponent implements OnInit {
     });
   }
 
-  public drawTree() {
+  public clearGraph() {
+    this.dialog.open(ConfirmDialogComponent, {
+      autoFocus: true,
+      disableClose: true,
+      width: this.dialogWidth,
+      data: {
+        message: 'Do you want to clear the graph?',
+      }
+    }).afterClosed().subscribe((result: any) => {
+      if (result != undefined && result.action == 'yes') {
+        const url = `${environment.apiUrl}` + 'graph';
+        this.http.delete(url).subscribe({
+          next: () => {
+            this.message = null;
+            this.ngOnInit();
+          },
+          error: error => {
+            console.error(error);
+            this.message = error.error.status + ': ' + error.error.message;
+          }
+        });
+      }
+    });
+  }
+
+
+
+
+  public zoom() {
+    this.ngOnInit();
+  }
+
+  public drawTree(treeData: any) {
     // create the nested data structure representing the tree
-    const treeDataStructure: any = d3.hierarchy(this.cachedData, (d: any) => {
+    const treeDataStructure: any = d3.hierarchy(treeData, (d: any) => {
       return d.children;
     });
     treeDataStructure.x0 = window.screen.height / 2;
@@ -109,6 +139,7 @@ export class GraphComponent implements OnInit {
         id: d.data.id,
         name: d.data.name,
         color: rbg == null ? new Color(0, 0, 0) : new Color(rbg.r, rbg.g, rbg.b),
+        type: d.data.type,
         properties: d.data.properties
       }
 
@@ -116,7 +147,8 @@ export class GraphComponent implements OnInit {
         id: '',
         name: '',
         color: rbg == null ? new Color(0, 0, 0) : new Color(rbg.r, rbg.g, rbg.b),
-        properties: d.data.properties
+        type: '',
+        properties: {}
       }
 
       this.dialog.open(EditNodeDialogComponent, {
@@ -138,15 +170,17 @@ export class GraphComponent implements OnInit {
               id: result.child.id,
               name: result.child.name,
               color: result.child.color.toHexString(),
+              type: result.child.type,
               properties: result.child.properties,
               children: []
             }
           } else { // if parent is *not* null we can: a) amend the parent itself; and/or create a child
-            url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.name;
+            url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.id;
             body = { // the parent is *not* the root node
               id: result.node.id,
               name: result.node.name,
               color: result.node.color.toHexString(),
+              type: result.child.type,
               properties: result.child.properties,
               children: []
             }
@@ -155,6 +189,7 @@ export class GraphComponent implements OnInit {
                 id: result.child.id,
                 name: result.child.name,
                 color: result.child.color.toHexString(),
+                type: result.child.type,
                 properties: result.child.properties,
                 children: []
               })
@@ -193,6 +228,7 @@ export class GraphComponent implements OnInit {
                     id: result.child.id,
                     name: result.child.name,
                     color: result.child.color.toHexString(),
+                    type: result.child.type,
                     properties: result.child.properties,
                     children: []
                   }

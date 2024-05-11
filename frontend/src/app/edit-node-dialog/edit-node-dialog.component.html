@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>{{ data.node.name }}</h1>
+<h1 mat-dialog-title>{{ data.node.name }} [{{ data.node.type }}]</h1>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Color</mat-label>
@@ -22,6 +22,15 @@
       <input matInput [ngxMatColorPicker]="picker" formControlName="color">
       <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
       <ngx-mat-color-picker #picker [touchUi]="false"></ngx-mat-color-picker>
+    </mat-form-field>
+    <p></p>
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="division">Division</mat-option>
+        <mat-option value="lexeme">Lexeme</mat-option>
+        <mat-option value="opposition">Opposition</mat-option>
+      </mat-select>
     </mat-form-field>
     <p></p>
   </div>

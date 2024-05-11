@@ -1,7 +1,10 @@
 <h3 *ngIf="message">{{ message }}</h3>
 <div class="flex-container">
-  <mat-slider (change)="drawTree()"><input matSliderThumb [(ngModel)]="hzoom">H Zoom (In/Out)</mat-slider>
-  <mat-slider (change)="drawTree()"><input matSliderThumb [(ngModel)]="vzoom">V Zoom (In/Out)</mat-slider>
+  <mat-slider (change)="zoom()"><input matSliderThumb [(ngModel)]="hzoom">H Zoom (In/Out)</mat-slider>
+  &nbsp;
+  <mat-slider (change)="zoom()"><input matSliderThumb [(ngModel)]="vzoom">V Zoom (In/Out)</mat-slider>
+  <div class="filler"></div>
+  <button mat-raised-button (click)="clearGraph()"><mat-icon class="right">delete</mat-icon>Clear Graph</button>
 </div>
 <div id="container" class="svg-container">
 </div>
