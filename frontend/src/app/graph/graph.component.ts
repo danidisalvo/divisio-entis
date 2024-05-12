@@ -8,11 +8,11 @@ import {environment} from '../../environments/environment';
 
 import * as d3 from 'd3';
 
-type Properties = {
+export type Properties = {
   [key: string]: string;
 };
 
-interface Node {
+export interface Node {
   id: string,
   name: string;
   color: Color,

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/google/uuid"
+	"strconv"
 )
 
 const (
@@ -220,7 +221,39 @@ func traverse(node *Node, traversed []*Node) []*Node {
 		if child.Properties == nil {
 			child.Properties = make(map[string]string)
 		}
+		if child.Children == nil {
+			child.Children = make([]*Node, 0)
+		}
 		traversed = traverse(child, traversed)
 	}
 	return traversed
+}
+
+// SimpleString returns a simplified string representation of this node (see test-print.txt)
+func (n *Node) SimpleString() string {
+	var traversed string
+	var counters []int
+	counters = append(counters, 1)
+	return simpleString(n, traversed, "", counters)
+}
+
+// traverse recursively traverses the graph using the Depth-First Search algorithm
+func simpleString(node *Node, traversed string, prefix string, counters []int) string {
+	traversed = fmt.Sprintf("%s%s %s\n", traversed, formatCounters(counters), node.Name)
+	if len(node.Children) > 0 {
+		counters = append(counters, 0)
+	}
+	for _, child := range node.Children {
+		counters[len(counters)-1]++
+		traversed = simpleString(child, traversed, prefix, counters)
+	}
+	return traversed
+}
+
+func formatCounters(counters []int) string {
+	s := ""
+	for i := 0; i < len(counters); i++ {
+		s += "." + strconv.Itoa(counters[i])
+	}
+	return s[1:]
 }

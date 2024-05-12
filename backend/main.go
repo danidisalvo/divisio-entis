@@ -16,6 +16,7 @@ const (
 	contentType     = "Content-Type"
 	filename        = "volume/graph.json"
 	maxMem          = 1 << 16
+	textPlain       = "text/plain"
 	uploadFailed    = "Upload failed [%s]"
 )
 
@@ -44,6 +45,12 @@ func (g *Graph) graph(context *gin.Context) {
 	}
 	context.Header(contentType, applicationJson)
 	context.String(http.StatusOK, json)
+}
+
+// graph returns a simplified string representation of this graph
+func (g *Graph) print(context *gin.Context) {
+	context.Header(contentType, textPlain)
+	context.String(http.StatusOK, g.root.SimpleString())
 }
 
 // graph deletes the graph
@@ -213,6 +220,7 @@ func main() {
 	router.GET("/apis", healthCheck)
 	router.DELETE("/apis/graph", g.deleteGraph)
 	router.GET("/apis/graph", g.graph)
+	router.GET("/apis/graph/print", g.print)
 	router.GET("/apis/health", healthCheck)
 	router.PUT("/apis/nodes", g.addChildToRootNode)
 	router.PUT("/apis/nodes/:parent", g.updateNode)

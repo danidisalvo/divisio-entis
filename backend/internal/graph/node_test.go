@@ -10,6 +10,9 @@ import (
 //go:embed test-graph.json
 var testGraphData []byte
 
+//go:embed test-print.txt
+var testPrintData []byte
+
 const (
 	red    = "#ff0000"
 	green  = "#00ff00"
@@ -341,6 +344,18 @@ func TestNode_Traverse_Success(t *testing.T) {
 	actual := root.Traverse()
 	if !reflect.DeepEqual(expected, actual) {
 		t.Error("Lists do not match")
+	}
+}
+
+func TestNode_SimpleString_Success(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	expected := string(testPrintData)
+	actual := root.SimpleString()
+	if expected != actual {
+		t.Errorf("strings fo not match. Expected: %s\n. Actual: %s", expected, actual)
 	}
 }
 

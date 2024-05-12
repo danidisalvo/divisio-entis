@@ -1,6 +1,6 @@
 <h3 *ngIf="message">{{ message }}</h3>
 <div class="flex-container">
-  <a *ngIf="jsonSafeUrl" [href]="jsonSafeUrl" download="graph.json">Download as JSON</a>
+  <a *ngIf="jblobSafeUrl" [href]="jblobSafeUrl" download="graph.json">Download as JSON</a>
   &nbsp;
-  <a *ngIf="jsonSafeUrl" [href]="jsonSafeUrl" download="graph.txt">Download as text</a>
+  <a *ngIf="tblobSafeUrl" [href]="tblobSafeUrl" download="graph.txt">Download as text</a>
 </div>
