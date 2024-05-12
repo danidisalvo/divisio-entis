@@ -57,6 +57,7 @@ func newNode(id, name, color string, nodeType NodeType) (*Node, error) {
 		Color:      color,
 		Type:       nodeType,
 		Properties: make(map[string]string),
+		Children:   make([]*Node, 0),
 	}, nil
 }
 

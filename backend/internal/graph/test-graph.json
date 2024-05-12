@@ -1,5 +1,5 @@
 {
-  "id": "id_ens",
+  "id": "0",
   "name": "ens",
   "color": "#dddddd",
   "type": "lexeme",
@@ -14,7 +14,7 @@
       "color": "#ff0000",
       "type": "lexeme",
       "properties": {},
-      "children": null
+      "children": []
     },
     {
       "id": "id_C",
@@ -22,7 +22,7 @@
       "color": "#ff0000",
       "type": "lexeme",
       "properties": {},
-      "children": null
+      "children": []
     },
     {
       "id": "id_D",
@@ -37,7 +37,7 @@
           "color": "#0000ff",
           "type": "lexeme",
           "properties": {},
-          "children": null
+          "children": []
         },
         {
           "id": "id_G",
@@ -52,7 +52,7 @@
               "color": "#00ffff",
               "type": "division",
               "properties": {},
-              "children": null
+              "children": []
             },
             {
               "id": "id_I",
@@ -60,7 +60,7 @@
               "color": "#00ffff",
               "type": "lexeme",
               "properties": {},
-              "children": null
+              "children": []
             }
           ]
         }
@@ -72,7 +72,7 @@
       "color": "#00ff00",
       "type": "lexeme",
       "properties": {},
-      "children": null
+      "children": []
     }
   ]
 }

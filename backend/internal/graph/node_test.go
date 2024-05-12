@@ -345,7 +345,7 @@ func TestNode_Traverse_Success(t *testing.T) {
 }
 
 func provisionNodes() (*Node, []*Node, error) {
-	node, err := NewLexeme("id_ens", "ens", "")
+	node, err := NewLexeme("0", "ens", "")
 	node.SetProperty("p1", "abc")
 	node.SetProperty("p2", "xyz")
 	if err != nil {
