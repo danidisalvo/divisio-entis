@@ -10,9 +10,9 @@ tearDown() {
 }
 
 echo "Starting the divisio-entis-backend"
-go build -o divisio-entis-backend main.go
-./divisio-entis-backend &
-sleep 10
+#go build -o divisio-entis-backend main.go
+#./divisio-entis-backend &
+#sleep 10
 
 #######################################################################################################################
 
@@ -27,9 +27,18 @@ echo "Health check ok"
 #######################################################################################################################
 
 echo
+echo "Resetting the graph"
+response=$(curl -s -w "%{http_code}" -X DELETE http://localhost:8080/apis/graph)
+if [ $response != 204 ]; then
+  tearDown 1 "Failed to delete the graph"
+fi
+
+#######################################################################################################################
+
+echo
 echo "Adding a node to the root"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ff0000","type":"LEXEME","children":null}' \
+  --data '{"id":"1","name":"A","color":"#ff0000","type":"lexeme","children":null}' \
   -X PUT http://localhost:8080/apis/nodes --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to add node A to the root"
@@ -44,12 +53,10 @@ echo "Added node A to the root"
 
 #######################################################################################################################
 
-#######################################################################################################################
-
 echo
 echo "Adding duplicated node to the root"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ff0000","type":"LEXEME","children":null}' \
+  --data '{"id":"1","name":"A","color":"#ff0000","type":"lexeme","children":null}' \
   -X PUT http://localhost:8080/apis/nodes --output output.json)
 if [ $response != 400 ]; then
   tearDown 1 "The duplicated node A was added to the root"
@@ -61,7 +68,7 @@ echo
 echo
 echo "Updating node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ffffff","type":"LEXEME","children":null}' \
+  --data '{"id":"1","name":"A","color":"#ffffff","type":"lexeme","children":null}' \
   -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to update node A"
@@ -79,7 +86,7 @@ echo
 echo
 echo "Adding node B to node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ffffff","type":"LEXEME","children":[{"id":"2","name":"B","color":"#ff0000","type":"LEXEME","children":null}]}' \
+  --data '{"id":"1","name":"AAA","color":"#ffffff","type":"division","children":[{"id":"2","name":"B","color":"#ff0000","type":"lexeme","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to add node B to node A"
@@ -95,9 +102,38 @@ echo "Added node B to node A"
 
 echo
 echo
+echo "Renaming node A"
+response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
+  --data '{"id":"1","name":"AAA","color":"#ffffff","type":"division","children":null}' \
+  -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
+if [ $response != 200 ]; then
+  tearDown 1 "Failed to update node A"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[0].name')
+if [ "$VAR" != "AAA" ]; then
+  tearDown 1 "Failed to update node A's name"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[0].type')
+if [ "$VAR" != "division" ]; then
+  tearDown 1 "Failed to update node A's division"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[0].children[0].name')
+if [ "$VAR" != "B" ]; then
+  tearDown 1 "The child of node A has been deleted"
+fi
+
+echo "Node A updated"
+
+#######################################################################################################################
+
+echo
+echo
 echo "Adding a duplicated node to node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ffffff","type":"LEXEME","children":[{"id":"0","name":"ens","color":"#ff0000","type":"LEXEME","children":null}]}' \
+  --data '{"id":"1","name":"AAA","color":"#ffffff","type":"division","children":[{"id":"0","name":"ens","color":"#ff0000","type":"lexeme","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
 if [ $response != 400 ]; then
   tearDown 1 "The duplicated node ens was added to node A"

@@ -1,5 +1,19 @@
-<h1 mat-dialog-title>{{ data.node.name }} [{{ data.node.type }}]</h1>
+<h1 mat-dialog-title>[{{ data.node.type }}]</h1>
 <mat-dialog-content [formGroup]="form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="division">Division</mat-option>
+      <mat-option value="lexeme">Lexeme</mat-option>
+      <mat-option value="opposition">Opposition</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p></p>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Color</mat-label>
     <input matInput [ngxMatColorPicker]="picker" formControlName="color">
@@ -38,7 +52,7 @@
 <div>
   <p></p>
   <mat-dialog-actions align="end">
-    <button mat-button [mat-dialog-close]="true">Cancel</button>
-    <button mat-button type="submit" (click)="onSubmit()" [disabled]="!isSavedEnabled()">Save</button>
+    <button mat-raised-button [mat-dialog-close]="true">Cancel</button>
+    <button mat-raised-button type="submit" (click)="onSubmit()" [disabled]="!isSavedEnabled()">Save</button>
   </mat-dialog-actions>
 </div>

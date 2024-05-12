@@ -171,13 +171,15 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 			for _, child := range parentNode.Children {
 				if child.Id == targetNode.Id {
 					targetFound = true
+					child.Name = targetNode.Name
+					child.Type = targetNode.Type
 					if targetNode.Color == "" {
 						child.Color = defaultColor
 					} else {
 						child.Color = targetNode.Color
 					}
 					child.Properties = targetNode.Properties
-					if targetNode.Children != nil && len(targetNode.Children) > 0 {
+					if targetNode.Children != nil && len(targetNode.Children) == 1 {
 						// there should be only one child
 						newChild := targetNode.Children[0]
 						// the id must be unique

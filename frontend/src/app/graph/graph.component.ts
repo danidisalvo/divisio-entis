@@ -81,9 +81,6 @@ export class GraphComponent implements OnInit {
     });
   }
 
-
-
-
   public zoom() {
     this.ngOnInit();
   }
@@ -104,7 +101,6 @@ export class GraphComponent implements OnInit {
     const svg = d3.select("div#container")
       .append("svg")
       .attr("preserveAspectRatio", "xMinYMin meet")
-      // .attr("viewBox", "-50 -50 " + window.screen.width * 0.90 + " " + window.screen.height * 2.0)
       .attr("viewBox", "-50 -50 " + window.screen.width * hZoomFactor + " " + window.screen.height * vZoomFactor)
       .classed("svg-content", true)
       .append('g');
@@ -180,9 +176,9 @@ export class GraphComponent implements OnInit {
               id: result.node.id,
               name: result.node.name,
               color: result.node.color.toHexString(),
-              type: result.child.type,
+              type: result.node.type,
               properties: result.child.properties,
-              children: []
+              children: [] // we leave them empty because the backend will not set them
             }
             if (result.addChild) {
               body.children?.push({
@@ -205,7 +201,9 @@ export class GraphComponent implements OnInit {
               this.message = null;
 
               // amend the current node
+              result.d.data.name = result.node.name
               result.d.data.color = result.node.color.toHexString();
+              result.d.data.type = result.node.type
 
               // add a child
               if (result.addChild) {
@@ -214,7 +212,7 @@ export class GraphComponent implements OnInit {
                   result.d.children = result.d._children;
                   result.d._children = null;
                 }
-                // create the children array if does not exist
+                // create the children array if it does not exist
                 if (result.d.children == null) {
                   result.d.children = [];
                 }
@@ -235,6 +233,7 @@ export class GraphComponent implements OnInit {
                 };
                 result.d.children.push(child);
               }
+
               update(result.d);
             },
             error: error => {
@@ -291,22 +290,22 @@ export class GraphComponent implements OnInit {
     const update = (source: any) => {
 
       const hierarchyNode = treeLayout(treeDataStructure);
-      const nodes = hierarchyNode.descendants();
+      const descendants = hierarchyNode.descendants();
 
-      nodes.forEach(function (d) {
+      descendants.forEach(function (d) {
         d.y = d.depth * 180
       });
 
       let i = 0;
 
       // start updating the nodes
-      const node = svg.selectAll('g.node')
-        .data(nodes, (d: any) => {
+      const nodes = svg.selectAll('g.node')
+        .data(descendants, (d: any) => {
           return d.id || (d.id = ++i);
         });
 
       // enter the new nodes at their parent's previous positions
-      const nodeEnter = node.enter().append('g')
+      const nodeEnter = nodes.enter().append('g')
         .attr('class', 'node')
         .attr('transform', () => {
           return 'translate(' + source.y0 + ',' + source.x0 + ')';
@@ -339,7 +338,7 @@ export class GraphComponent implements OnInit {
         });
 
       // @ts-ignore
-      const nodeUpdate = nodeEnter.merge(node);
+      const nodeUpdate = nodeEnter.merge(nodes);
 
       // transition to the proper position for the node
       nodeUpdate.transition()
@@ -358,8 +357,20 @@ export class GraphComponent implements OnInit {
           return d._children ? 'pointer' : 'auto';
         });
 
+      nodeUpdate.select('text')
+        .attr('dy', '.35em')
+        .attr('x', (d: any) => {
+          return d.children || d._children ? -13 : 13;
+        })
+        .attr('text-anchor', (d: any) => {
+          return d.children || d._children ? 'end' : 'start';
+        })
+        .text((d: any) => {
+          return d.data.name;
+        });
+
       // remove the exiting nodes
-      const nodeExit = node.exit()
+      const nodeExit = nodes.exit()
         .transition()
         .duration(this.transitionDuration)
         .attr('transform', () => {
@@ -414,7 +425,7 @@ export class GraphComponent implements OnInit {
         .remove();
 
       // store the old positions for transition
-      nodes.forEach((d: any) => {
+      descendants.forEach((d: any) => {
         d.x0 = d.x;
         d.y0 = d.y;
       });

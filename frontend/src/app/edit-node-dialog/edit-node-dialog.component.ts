@@ -11,13 +11,17 @@ import { v4 as uuidv4 } from 'uuid';
 export class EditNodeDialogComponent {
 
   form = this.fb.group({
+    name: [
+      {value: this.data.node.name, disabled: false},
+      [Validators.required, Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(64)]],
     color: [
       {value: this.data.node.color, disabled: false},
       [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
     ],
+    type: [{value: this.data.node.type, disabled: false}],
     addChild: [false],
     child: this.fb.group({
-      name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(32)]],
+      name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(64)]],
       color: [
         {value: this.data.node.color, disabled: false},
         [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
@@ -37,11 +41,11 @@ export class EditNodeDialogComponent {
       d: this.data.d,
       node: {
         id: this.data.node.id,
-        name: this.data.node.name,
+        name: this.form.controls['name'].value,
         color: this.form.controls['color'].value,
-        type: this.data.node.type,
+        type: this.form.controls['type'].value,
         properties: this.data.node.properties,
-        children: []
+        children: [] // we leave them empty because the backend will not set them
       },
       child: {
         id: uuidv4(),
@@ -68,6 +72,6 @@ export class EditNodeDialogComponent {
   }
 
   public isSavedEnabled() {
-    return this.form.valid && (this.hasChild());
+    return this.form.valid;
   }
 }
