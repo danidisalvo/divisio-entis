@@ -216,6 +216,9 @@ func traverse(node *Node, traversed []*Node) []*Node {
 		if child.Type == "" {
 			child.Type = LEXEME
 		}
+		if child.Properties == nil {
+			child.Properties = make(map[string]string)
+		}
 		traversed = traverse(child, traversed)
 	}
 	return traversed

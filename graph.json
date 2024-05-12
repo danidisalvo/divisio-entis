@@ -10,21 +10,21 @@
       "name": "ex certitudine scientiae",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "3b818932-985e-4867-a300-44097be06eeb",
           "name": "ens simpliciter",
           "type": "lexeme",
           "color": "#ffff00",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "57fa80a1-d07d-47e0-b9f8-34f8bb7d116d",
               "name": "ens mobile",
               "type": "lexeme",
               "color": "#ffff00",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -34,21 +34,21 @@
           "name": "ens indivisibile",
           "type": "lexeme",
           "color": "#ffff00",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "fa12e364-6d60-43a6-aad0-3ac037332cca",
               "name": "ens quantum",
               "type": "lexeme",
               "color": "#ffff00",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "8a05459d-5958-4320-b9e6-0f1d04002a66",
                   "name": "ens mobile",
                   "type": "lexeme",
                   "color": "#ffff00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -62,14 +62,14 @@
       "name": "ex gradibus",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "acd9d0e7-4df7-488a-83b5-07f7d3b21533",
           "name": "ens intellectuale vel separabile",
           "type": "lexeme",
           "color": "#ff0000",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -77,7 +77,7 @@
           "name": "ens rationale",
           "type": "lexeme",
           "color": "#ff0000",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -85,7 +85,7 @@
           "name": "ens sensibile vel inseparabile",
           "type": "lexeme",
           "color": "#ff0000",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -93,7 +93,7 @@
           "name": "simpliciter existentia",
           "type": "lexeme",
           "color": "#ff0000",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -103,28 +103,28 @@
       "name": "actus-potentia",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "05f154d9-8d47-4a4b-a02b-57fd0b166ab3",
           "name": "ens in actu",
           "type": "lexeme",
           "color": "#808000",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "0d027766-0243-4c24-8b7e-58f4faea27b7",
               "name": "ens in actu simpliciter",
               "type": "lexeme",
               "color": "#808000",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "5bdb7f27-4fd7-458f-8548-14fe67806f1f",
                   "name": "ens actu in se",
                   "type": "lexeme",
                   "color": "#808000",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -132,7 +132,7 @@
                   "name": "ens actu in alio",
                   "type": "lexeme",
                   "color": "#808000",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -142,14 +142,14 @@
               "name": "ens in actu secundum quid",
               "type": "lexeme",
               "color": "#808000",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "8c5f80e8-c80d-499d-9e47-e5b5c89a9efa",
                   "name": "ens actu in se",
                   "type": "lexeme",
                   "color": "#808000",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -157,7 +157,7 @@
                   "name": "ens actu in alio",
                   "type": "lexeme",
                   "color": "#808000",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -169,14 +169,14 @@
           "name": "ens in potentia (ens diminutum)",
           "type": "lexeme",
           "color": "#808000",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "750c3de2-027f-452c-82a4-5ed52bbdede4",
               "name": "ens in potentia simpliciter",
               "type": "lexeme",
               "color": "#808000",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -184,7 +184,7 @@
               "name": "ens in potentia secundum quid",
               "type": "lexeme",
               "color": "#808000",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -196,42 +196,42 @@
       "name": "ex praedicatione",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "f4beafcc-3384-4970-bd82-6185973e0938",
           "name": " res sensibile-ens universale",
           "type": "division",
           "color": "#dddddd",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "5195ab36-68b1-4c42-a5f6-6ec5ec7df0e3",
               "name": "ens per se vel in se",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "fd273f6e-2b31-46c7-9627-97c898d7acec",
                   "name": "ens in re vel extra animam vel perfectum",
                   "type": "lexeme",
                   "color": "#ff00ff",
-                  "properties": null,
+                  "properties": {},
                   "children": [
                     {
                       "id": "746933f0-fbd7-425b-a847-f6add8f04329",
                       "name": " ens sensibile-ens intellectuale",
                       "type": "division",
                       "color": "#dddddd",
-                      "properties": null,
+                      "properties": {},
                       "children": [
                         {
                           "id": "d5f2cb3c-4821-4fe4-a9f6-8d253c75104a",
                           "name": "ens sensibile",
                           "type": "lexeme",
                           "color": "#ff0000",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         },
                         {
@@ -239,7 +239,7 @@
                           "name": "ens intellectuale vel intelligibile vel intentionale",
                           "type": "lexeme",
                           "color": "#ff0000",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         }
                       ]
@@ -249,14 +249,14 @@
                       "name": " substantia-accidens",
                       "type": "division",
                       "color": "#dddddd",
-                      "properties": null,
+                      "properties": {},
                       "children": [
                         {
                           "id": "965318ad-e9ef-4f61-89ef-2f676d27d655",
                           "name": "substantia (ens per se)",
                           "type": "lexeme",
                           "color": "#ff00ff",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         },
                         {
@@ -264,7 +264,7 @@
                           "name": "accidens (ens per aliud et in alio)",
                           "type": "lexeme",
                           "color": "#ff00ff",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         }
                       ]
@@ -276,7 +276,7 @@
                   "name": "ens in mente",
                   "type": "lexeme",
                   "color": "#ff00ff",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -284,7 +284,7 @@
                   "name": "ens quod nihil habet extra animam",
                   "type": "lexeme",
                   "color": "#ff00ff",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -294,7 +294,7 @@
               "name": "ens per accidens",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -304,14 +304,14 @@
           "name": "ens ut praedicatum",
           "type": "lexeme",
           "color": "#ff00ff",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "4ef29dd9-99d3-43ac-8a6b-3788036726de",
               "name": "praedicatum accidentale (in mente; ad quaestionem an est)",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -319,7 +319,7 @@
               "name": "praedicatum substantiale (in re; ad quaestionem quid est)",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -329,14 +329,14 @@
           "name": "ex positivitate",
           "type": "division",
           "color": "#dddddd",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "de471297-5cd0-49dc-acac-6dec1fd20a58",
               "name": "ens positivum",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -344,7 +344,7 @@
               "name": "privatio vel ens privatum",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -356,28 +356,28 @@
       "name": "ex modo",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "3cd8315e-a263-415f-8d0a-df97c0297d31",
           "name": "modus essendi",
           "type": "division",
           "color": "febf00",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "4adfc52b-2a56-4e78-91e4-70acc4aac837",
               "name": "ens debilissimum",
               "type": "lexeme",
               "color": "#febf00",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "d0e04888-2698-4153-96d3-124faf8a6a6a",
                   "name": "negatio",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -385,7 +385,7 @@
                   "name": "privatio vel ens privatum",
                   "type": "lexeme",
                   "color": "#ff00ff",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -393,7 +393,7 @@
                   "name": "relatio",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -403,14 +403,14 @@
               "name": "ex mutatione",
               "type": "division",
               "color": "#dddddd",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "4e70d3c3-d05e-474e-81bb-08a8dd8cf86a",
                   "name": "generatio",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -418,7 +418,7 @@
                   "name": "corruptio",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -426,7 +426,7 @@
                   "name": "motus",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -436,14 +436,14 @@
               "name": "ens debile",
               "type": "lexeme",
               "color": "#febf00",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "0cfa8f7c-1ad1-42a9-abca-6e051d5d95b9",
                   "name": "novem categoriae",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -451,7 +451,7 @@
                   "name": "proprietates substantiae",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -461,14 +461,14 @@
               "name": "ens perfectissimum",
               "type": "lexeme",
               "color": "#febf00",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "3c4181cf-f3ed-4c67-9908-648449b1e995",
                   "name": "substantia",
                   "type": "lexeme",
                   "color": "#ff00ff",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -480,28 +480,28 @@
           "name": "modus generalis consequens omne ens",
           "type": "division",
           "color": "#febf00",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "122cbd51-329b-4f3f-a540-172a986e40b7",
               "name": "ens in se",
               "type": "lexeme",
               "color": "#ff00ff",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "6570adfc-8a64-49ad-b740-e3791cf0abff",
                   "name": "de transcendentibus",
                   "type": "division",
                   "color": "#dddddd",
-                  "properties": null,
+                  "properties": {},
                   "children": [
                     {
                       "id": "efc63504-2389-46b6-b3af-a371abf0b99f",
                       "name": "unum vel ens indivisum",
                       "type": "lexeme",
                       "color": "#febf00",
-                      "properties": null,
+                      "properties": {},
                       "children": []
                     },
                     {
@@ -509,7 +509,7 @@
                       "name": "multa",
                       "type": "lexeme",
                       "color": "#febf00",
-                      "properties": null,
+                      "properties": {},
                       "children": []
                     }
                   ]
@@ -519,7 +519,7 @@
                   "name": "de ceteris",
                   "type": "division",
                   "color": "#dddddd",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -529,14 +529,14 @@
               "name": "ens in ordine ad aliud",
               "type": "lexeme",
               "color": "#febf00",
-              "properties": null,
+              "properties": {},
               "children": [
                 {
                   "id": "5e73b1e5-447d-4091-a874-29085ad9cf4f",
                   "name": "aliquid",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 },
                 {
@@ -544,14 +544,14 @@
                   "name": "bonum",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": [
                     {
                       "id": "5358a3d0-d2e4-4264-a5db-caff74f3f699",
                       "name": "ens perfectivum",
                       "type": "lexeme",
                       "color": "#febf00",
-                      "properties": null,
+                      "properties": {},
                       "children": []
                     },
                     {
@@ -559,14 +559,14 @@
                       "name": "",
                       "type": "division",
                       "color": "#dddddd",
-                      "properties": null,
+                      "properties": {},
                       "children": [
                         {
                           "id": "90909576-ddd9-4efd-b575-eeea6c520ef2",
                           "name": "ens perfectibile",
                           "type": "lexeme",
                           "color": "#febf00",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         },
                         {
@@ -574,7 +574,7 @@
                           "name": "ens corruptivus",
                           "type": "lexeme",
                           "color": "#febf00",
-                          "properties": null,
+                          "properties": {},
                           "children": []
                         }
                       ]
@@ -586,7 +586,7 @@
                   "name": "verum",
                   "type": "lexeme",
                   "color": "#febf00",
-                  "properties": null,
+                  "properties": {},
                   "children": []
                 }
               ]
@@ -600,14 +600,14 @@
       "name": "ex causalitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "bf8f1f25-b251-4314-978e-543e82895ea8",
           "name": "ens causatum",
           "type": "lexeme",
           "color": "#b44848",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -615,7 +615,7 @@
           "name": "ens incausatum",
           "type": "lexeme",
           "color": "#b44848",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -625,14 +625,14 @@
       "name": "ex corruptibilitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "b552c83a-6638-4aba-88ad-038e1b92acc9",
           "name": "ens corruptibile",
           "type": "lexeme",
           "color": "#800080",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -640,7 +640,7 @@
           "name": "ens incorruptibile",
           "type": "lexeme",
           "color": "#800080",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -650,14 +650,14 @@
       "name": "ex divinitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "1e2c1861-8375-47cb-872f-0efe4e2e4341",
           "name": "ens divinum",
           "type": "lexeme",
           "color": "#ebe333",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -665,7 +665,7 @@
           "name": "ens naturale",
           "type": "lexeme",
           "color": "#ebe333",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -675,14 +675,14 @@
       "name": "ex finitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "c3f30904-623a-4fb8-a359-c578002e09ab",
           "name": "ens creatum vel finitum",
           "type": "lexeme",
           "color": "#000080",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -690,7 +690,7 @@
           "name": "ens increatum vel infinitum",
           "type": "lexeme",
           "color": "#000080",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -700,21 +700,21 @@
       "name": "ex mensura temporis",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "b4dffb7e-52f0-416c-98ce-b11bcc123847",
           "name": "ens atemporale",
           "type": "division",
           "color": "#dddddd",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "becafc89-390b-480d-8d74-3cb8d21fdee4",
               "name": "ens aeternum",
               "type": "lexeme",
               "color": "#b000ff",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -722,7 +722,7 @@
               "name": "ens aeviternum",
               "type": "lexeme",
               "color": "#b000ff",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -732,7 +732,7 @@
           "name": "ens temporale",
           "type": "lexeme",
           "color": "#b000ff",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -742,14 +742,14 @@
       "name": "ex mobilitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "e4d369f5-4908-419b-95bc-31d716ecede7",
           "name": "ens immobile",
           "type": "lexeme",
           "color": "#00ff00",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -757,7 +757,7 @@
           "name": "ens mobile",
           "type": "lexeme",
           "color": "#ffff00",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -767,14 +767,14 @@
       "name": "ex modalitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "034b699a-f87d-4026-bbe2-6a81435a70c5",
           "name": "ens necessarium",
           "type": "lexeme",
           "color": "#00ffff",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -782,7 +782,7 @@
           "name": "ens contingens",
           "type": "lexeme",
           "color": "#00ffff",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -792,14 +792,14 @@
       "name": "ex mutabilitate",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "401ee8b1-e479-413c-b318-4f5a4ebbefca",
           "name": "ens immutabile",
           "type": "lexeme",
           "color": "#bdf14a",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -807,7 +807,7 @@
           "name": "ens mutabile",
           "type": "lexeme",
           "color": "#bdf14a",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -817,14 +817,14 @@
       "name": "ex participatione",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "8eae3adf-5bfe-4504-a082-f6a5b076fc2c",
           "name": "ens per essentiam (ipsum esse subsistens)",
           "type": "lexeme",
           "color": "#c4ce4c",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -832,7 +832,7 @@
           "name": "ens per participationem",
           "type": "lexeme",
           "color": "#c4ce4c",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -842,21 +842,21 @@
       "name": "ex perfectione",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "af4a0c1b-51ef-4a0e-a5b7-9c58b9de397f",
           "name": "ens perfectum vel completum vel fixum",
           "type": "lexeme",
           "color": "#008080",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "32b5db65-c402-4fdd-866c-9808435b4805",
               "name": "ens universaliter perfectum",
               "type": "lexeme",
               "color": "#008080",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -864,7 +864,7 @@
               "name": "ens perfectum in aliquo genere",
               "type": "lexeme",
               "color": "#008080",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -874,14 +874,14 @@
           "name": "ens imperfectum vel incompletum",
           "type": "lexeme",
           "color": "#008080",
-          "properties": null,
+          "properties": {},
           "children": [
             {
               "id": "13f556a5-448c-45e0-a89a-ff3449030209",
               "name": "intentiones",
               "type": "lexeme",
               "color": "#008080",
-              "properties": null,
+              "properties": {},
               "children": []
             },
             {
@@ -889,7 +889,7 @@
               "name": "ens quod est in anima (ens diminutum) ",
               "type": "lexeme",
               "color": "#008080",
-              "properties": null,
+              "properties": {},
               "children": []
             }
           ]
@@ -901,14 +901,14 @@
       "name": "ex possessione esse",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "eb11e9b6-3707-436c-ae5f-3fce2f7164ed",
           "name": "ens in anima",
           "type": "lexeme",
           "color": "#ff00ff",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -916,7 +916,7 @@
           "name": "ens naturale quod habet esse fixum in natura",
           "type": "lexeme",
           "color": "#ebe333",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]
@@ -926,14 +926,14 @@
       "name": "quo aliquid est",
       "type": "division",
       "color": "#dddddd",
-      "properties": null,
+      "properties": {},
       "children": [
         {
           "id": "fdd95cd4-7a03-42fb-b2e3-80060762dae1",
           "name": "ens subsistens (quod in se subsistit)",
           "type": "lexeme",
           "color": "#ff00ff",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -941,7 +941,7 @@
           "name": "principium subsistendi (ut forma)",
           "type": "lexeme",
           "color": "#008000",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -949,7 +949,7 @@
           "name": "dispositio subsistentis (ut qualitas)",
           "type": "lexeme",
           "color": "#ff00ff",
-          "properties": null,
+          "properties": {},
           "children": []
         },
         {
@@ -957,7 +957,7 @@
           "name": "privatio dispositionis subsistentis (ut caecitas)",
           "type": "lexeme",
           "color": "#ff00ff",
-          "properties": null,
+          "properties": {},
           "children": []
         }
       ]

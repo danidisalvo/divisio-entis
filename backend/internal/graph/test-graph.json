@@ -2,7 +2,7 @@
   "id": "id_ens",
   "name": "ens",
   "color": "#dddddd",
-  "type": "LEXEME",
+  "type": "lexeme",
   "properties": {
     "p1": "abc",
     "p2": "xyz"
@@ -12,7 +12,7 @@
       "id": "id_B",
       "name": "B",
       "color": "#ff0000",
-      "type": "LEXEME",
+      "type": "lexeme",
       "properties": {},
       "children": null
     },
@@ -20,7 +20,7 @@
       "id": "id_C",
       "name": "C",
       "color": "#ff0000",
-      "type": "LEXEME",
+      "type": "lexeme",
       "properties": {},
       "children": null
     },
@@ -28,14 +28,14 @@
       "id": "id_D",
       "name": "D",
       "color": "#00ff00",
-      "type": "OPPOSITION",
+      "type": "opposition",
       "properties": {},
       "children": [
         {
           "id": "id_F",
           "name": "F",
           "color": "#0000ff",
-          "type": "LEXEME",
+          "type": "lexeme",
           "properties": {},
           "children": null
         },
@@ -43,14 +43,14 @@
           "id": "id_G",
           "name": "G",
           "color": "#0000ff",
-          "type": "LEXEME",
+          "type": "lexeme",
           "properties": {},
           "children": [
             {
               "id": "id_H",
               "name": "H",
               "color": "#00ffff",
-              "type": "DIVISION",
+              "type": "division",
               "properties": {},
               "children": null
             },
@@ -58,7 +58,7 @@
               "id": "id_I",
               "name": "I",
               "color": "#00ffff",
-              "type": "LEXEME",
+              "type": "lexeme",
               "properties": {},
               "children": null
             }
@@ -70,7 +70,7 @@
       "id": "id_E",
       "name": "E",
       "color": "#00ff00",
-      "type": "LEXEME",
+      "type": "lexeme",
       "properties": {},
       "children": null
     }
