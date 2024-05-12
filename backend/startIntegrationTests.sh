@@ -1,6 +1,7 @@
 #!/bin/bash
 
 killall divisio-entis-backend
+rm volume/graph.json
 
 tearDown() {
   killall divisio-entis-backend
@@ -96,7 +97,7 @@ echo
 echo
 echo "Adding a duplicated node to node A"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
-  --data '{"id":"1","name":"A","color":"#ff0000","type":"LEXEME","children":[{"id":"0","name":"ens","color":"#ff0000","type":"LEXEME","children":null}]}' \
+  --data '{"id":"1","name":"A","color":"#ffffff","type":"LEXEME","children":[{"id":"0","name":"ens","color":"#ff0000","type":"LEXEME","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
 if [ $response != 400 ]; then
   tearDown 1 "The duplicated node ens was added to node A"

@@ -8,11 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"net/http"
+	"os"
 )
 
 const (
 	applicationJson = "application/json"
 	contentType     = "Content-Type"
+	filename        = "volume/graph.json"
 	maxMem          = 1 << 16
 	uploadFailed    = "Upload failed [%s]"
 )
@@ -47,6 +49,8 @@ func (g *Graph) graph(context *gin.Context) {
 // graph deletes the graph
 func (g *Graph) deleteGraph(context *gin.Context) {
 	g.root = NewGraph().root
+	g.save()
+
 	context.Writer.WriteHeader(http.StatusNoContent)
 }
 
@@ -68,6 +72,7 @@ func (g *Graph) addChildToRootNode(context *gin.Context) {
 		return
 	}
 	g.root = root
+	g.save()
 }
 
 // deleteNode deletes a node
@@ -82,6 +87,7 @@ func (g *Graph) deleteNode(context *gin.Context) {
 		return
 	}
 	g.root = root
+	g.save()
 }
 
 // updateNode updates a node. The updated node may include a new child node
@@ -103,6 +109,7 @@ func (g *Graph) updateNode(context *gin.Context) {
 		return
 	}
 	g.root = root
+	g.save()
 }
 
 // healthCheck returns a "200 OK" response to indicate that the backend service is available
@@ -140,14 +147,14 @@ func (g *Graph) upload(context *gin.Context) {
 		return
 	}
 	log.Debugf("Read %d bytes", n)
-	root, err := g.root.Parse(bytes)
+	g.root, err = g.root.Parse(bytes)
 	if err != nil {
 		msg := fmt.Sprintf(uploadFailed, err)
 		log.Error(msg)
 		handleFailedRequest(context, http.StatusInternalServerError, msg)
 		return
 	}
-	g.root = root
+	g.save()
 	context.Status(http.StatusOK)
 }
 
@@ -159,9 +166,45 @@ func handleFailedRequest(context *gin.Context, statusCode int, message string) {
 	})
 }
 
+// load loads the graph as a JSON file from disk
+func (g *Graph) load() {
+	bytes, err := os.ReadFile(filename)
+	if err != nil {
+		msg := fmt.Sprintf("Failed to read the file [%s]", err)
+		log.Error(msg)
+		return
+	}
+
+	log.Debugf("Read %d bytes", len(bytes))
+	g.root, err = g.root.Parse(bytes)
+	if err != nil {
+		msg := fmt.Sprintf("Failed to read the file [%s]", err)
+		log.Error(msg)
+	}
+}
+
+// save saves the graph as a JSON file to disk
+func (g *Graph) save() {
+	json, err := g.root.String()
+	if err != nil {
+		msg := fmt.Sprintf("Failed to generate the JSON string [%s]", err)
+		log.Error(msg)
+		return
+	}
+	bytes := []byte(json)
+	err = os.WriteFile(filename, bytes, 0600)
+	if err != nil {
+		msg := fmt.Sprintf("Failed to save the file [%s]", err)
+		log.Error(msg)
+		return
+	}
+	log.Debugf("Written %d bytes", len(bytes))
+}
+
 // main starts the backend http server
 func main() {
 	g := NewGraph()
+	g.load()
 
 	router := gin.Default()
 	router.MaxMultipartMemory = maxMem

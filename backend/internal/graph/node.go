@@ -8,9 +8,9 @@ import (
 
 const (
 	defaultColor = "#dddddd"
-	DIVISION     = NodeType("division")
-	LEXEME       = NodeType("lexeme")
-	OPPOSITION   = NodeType("opposition")
+	division     = NodeType("division")
+	lexeme       = NodeType("lexeme")
+	opposition   = NodeType("opposition")
 )
 
 type NodeType string
@@ -25,19 +25,19 @@ type Node struct {
 	Children   []*Node           `json:"children"`
 }
 
-// NewDivision creates a new DIVISION node
+// NewDivision creates a new division node
 func NewDivision(id, name, color string) (*Node, error) {
-	return newNode(id, name, color, DIVISION)
+	return newNode(id, name, color, division)
 }
 
 // NewLexeme creates a new LEXEME node
 func NewLexeme(id, name, color string) (*Node, error) {
-	return newNode(id, name, color, LEXEME)
+	return newNode(id, name, color, lexeme)
 }
 
 // NewOpposition creates a new OPPOSITION node
 func NewOpposition(id, name, color string) (*Node, error) {
-	return newNode(id, name, color, OPPOSITION)
+	return newNode(id, name, color, opposition)
 }
 
 // NewNode creates a new node
@@ -85,7 +85,7 @@ func (n *Node) Parse(bytes []byte) (*Node, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse the node [%s]", err)
 	}
-	n.Traverse() // TODO
+	n.Traverse()
 	return n, nil
 }
 
@@ -214,7 +214,7 @@ func traverse(node *Node, traversed []*Node) []*Node {
 			child.Id = uuid.New().String()
 		}
 		if child.Type == "" {
-			child.Type = LEXEME
+			child.Type = lexeme
 		}
 		if child.Properties == nil {
 			child.Properties = make(map[string]string)
