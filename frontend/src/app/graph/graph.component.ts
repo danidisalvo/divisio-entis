@@ -106,9 +106,6 @@ export class GraphComponent implements OnInit {
       .classed("svg-content", true)
       .append('g');
 
-    console.log("width: ", window.screen.width * 2 * hZoomFactor)
-    console.log("height: ", window.screen.height * 2 * vZoomFactor)
-
     // create and configure the tree layout
     const treeLayout = d3.tree().size([1800, 1800]);
 
