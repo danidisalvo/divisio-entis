@@ -101,12 +101,16 @@ export class GraphComponent implements OnInit {
     const svg = d3.select("div#container")
       .append("svg")
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .attr("viewBox", "-50 -50 " + window.screen.width * hZoomFactor + " " + window.screen.height * vZoomFactor)
+      .attr("viewBox", "-50 -50 " + 1800 * hZoomFactor + " " + 1800 * 2 * vZoomFactor)
+      // .attr("viewBox", "-50 -50 " + window.screen.width * 2 * hZoomFactor + " " + window.screen.height * 2 * vZoomFactor)
       .classed("svg-content", true)
       .append('g');
 
+    console.log("width: ", window.screen.width * 2 * hZoomFactor)
+    console.log("height: ", window.screen.height * 2 * vZoomFactor)
+
     // create and configure the tree layout
-    const treeLayout = d3.tree().size([window.screen.width, window.screen.height]);
+    const treeLayout = d3.tree().size([1800, 1800]);
 
     // see https://stackoverflow.com/questions/63157253/how-to-initialize-a-angular-material-components-color-picker-side-ts-with-stri
     const hexToRgb = (hex: string) => {
