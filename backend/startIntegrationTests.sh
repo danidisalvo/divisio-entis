@@ -10,9 +10,9 @@ tearDown() {
 }
 
 echo "Starting the divisio-entis-backend"
-#go build -o divisio-entis-backend main.go
-#./divisio-entis-backend &
-#sleep 10
+go build -o divisio-entis-backend main.go
+./divisio-entis-backend &
+sleep 10
 
 #######################################################################################################################
 
@@ -125,13 +125,13 @@ if [ "$VAR" != "B" ]; then
   tearDown 1 "The child of node A has been deleted"
 fi
 
-echo "Node A updated"
+echo "Node A updated to node AAA"
 
 #######################################################################################################################
 
 echo
 echo
-echo "Adding a duplicated node to node A"
+echo "Adding a duplicated node to node AAA"
 response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
   --data '{"id":"1","name":"AAA","color":"#ffffff","type":"division","children":[{"id":"0","name":"ens","color":"#ff0000","type":"lexeme","children":null}]}' \
   -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
@@ -143,7 +143,7 @@ fi
 
 echo
 echo
-echo "Deleting node B from node A"
+echo "Deleting node B from node AAAA"
 response=$(curl -s -w "%{http_code}" -X DELETE http://localhost:8080/apis/nodes/1/2 --output output.json)
 if [ $response != 200 ]; then
   tearDown 1 "Failed to delete node B from node A"
@@ -155,4 +155,40 @@ if [ "$VAR" = "B" ]; then
 fi
 echo "Deleted node B from node A"
 
+#######################################################################################################################
+
+echo
+echo
+echo "Adding node C to node AAA"
+response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
+  --data '{"id":"1","name":"AAA","color":"#ffffff","type":"division","children":[{"id":"3","name":"C","color":"#ff0000","type":"lexeme","children":null}]}' \
+  -X PUT http://localhost:8080/apis/nodes/0 --output output.json)
+if [ $response != 200 ]; then
+  tearDown 1 "Failed to add node C to node AAA"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[0].children[0].name')
+if [ "$VAR" != "C" ]; then
+  tearDown 1 "Failed to add node C to node A"
+fi
+echo "Added node C to node A"
+
+#######################################################################################################################
+
+echo
+echo
+echo "Moving node C to the root"
+response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
+  -X POST http://localhost:8080/apis/nodes/1/3/0 --output output.json)
+if [ $response != 200 ]; then
+  tearDown 1 "Failed to move node H to the root"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[1].name')
+if [ "$VAR" != "C" ]; then
+  tearDown 1 "Failed to move node C to the root"
+fi
+echo "Moved node C to the root"
+
 tearDown 0 "test cases succeeded"
+

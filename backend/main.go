@@ -3,6 +3,7 @@ package main
 import (
 	"backend/internal/graph"
 	_ "embed"
+	"errors"
 	"fmt"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -40,7 +41,7 @@ func (g *Graph) graph(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf("Failed to generate the JSON string [%s]", err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusInternalServerError, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	context.Header(contentType, applicationJson)
@@ -68,14 +69,14 @@ func (g *Graph) addChildToRootNode(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf("Failed to parse the JSON payload [%s]", err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	root, err := g.root.AddNode("0", node)
 	if err != nil {
 		msg := fmt.Sprintf("Failed to add the node to the graph's root [%s]", err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	g.root = root
@@ -90,7 +91,23 @@ func (g *Graph) deleteNode(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf("Failed to remove the node %q from its parent %q [%s]", target, parent, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
+		return
+	}
+	g.root = root
+	g.save()
+}
+
+// moveNode moves a node
+func (g *Graph) moveNode(context *gin.Context) {
+	parent := context.Param("parent")
+	target := context.Param("node")
+	newParent := context.Param("newParent")
+	root, err := g.root.MoveNode(parent, target, newParent)
+	if err != nil {
+		msg := fmt.Sprintf("Failed to move the node %q from %q to %q [%s]", target, parent, newParent, err)
+		log.Error(msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	g.root = root
@@ -105,14 +122,14 @@ func (g *Graph) updateNode(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf("Failed to parse the JSON payload [%s]", err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	root, err := g.root.UpdateNode(parent, node)
 	if err != nil {
 		msg := fmt.Sprintf("Failed to add the node %q to its parent %q [%s]", node.Name, parent, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	g.root = root
@@ -132,7 +149,7 @@ func (g *Graph) upload(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf(uploadFailed, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusBadRequest, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	log.Debug("File uploaded")
@@ -140,7 +157,7 @@ func (g *Graph) upload(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf(uploadFailed, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusInternalServerError, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	defer file.Close()
@@ -150,7 +167,7 @@ func (g *Graph) upload(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf(uploadFailed, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusInternalServerError, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	log.Debugf("Read %d bytes", n)
@@ -158,7 +175,7 @@ func (g *Graph) upload(context *gin.Context) {
 	if err != nil {
 		msg := fmt.Sprintf(uploadFailed, err)
 		log.Error(msg)
-		handleFailedRequest(context, http.StatusInternalServerError, msg)
+		handleFailedRequest(context, err, msg)
 		return
 	}
 	g.save()
@@ -166,7 +183,21 @@ func (g *Graph) upload(context *gin.Context) {
 }
 
 // handleFailedRequest writes a response with the given error code and message
-func handleFailedRequest(context *gin.Context, statusCode int, message string) {
+func handleFailedRequest(context *gin.Context, err error, message string) {
+
+	var duplicatedNodeError *graph.DuplicatedNodeError
+	var illegalArgumentError *graph.IllegalArgumentError
+	var nodeNotFoundError *graph.NodeNotFoundError
+
+	var statusCode int
+	if errors.As(err, &duplicatedNodeError) || errors.As(err, &illegalArgumentError) {
+		statusCode = http.StatusBadRequest
+	} else if errors.As(err, &nodeNotFoundError) {
+		statusCode = http.StatusNotFound
+	} else {
+		statusCode = http.StatusInternalServerError
+	}
+
 	context.JSON(statusCode, gin.H{
 		"status":  fmt.Sprintf("%d %s", statusCode, http.StatusText(statusCode)),
 		"message": message,
@@ -214,6 +245,7 @@ func main() {
 	g.load()
 
 	router := gin.Default()
+	router.HandleMethodNotAllowed = true
 	router.MaxMultipartMemory = maxMem
 	router.Use(cors.Default())
 
@@ -224,6 +256,7 @@ func main() {
 	router.GET("/apis/health", healthCheck)
 	router.PUT("/apis/nodes", g.addChildToRootNode)
 	router.PUT("/apis/nodes/:parent", g.updateNode)
+	router.POST("/apis/nodes/:parent/:node/:newParent", g.moveNode)
 	router.DELETE("/apis/nodes/:parent/:node", g.deleteNode)
 	router.POST("/apis/upload", g.upload)
 

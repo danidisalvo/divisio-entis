@@ -44,10 +44,10 @@ func NewOpposition(id, name, color string) (*Node, error) {
 // NewNode creates a new node
 func newNode(id, name, color string, nodeType NodeType) (*Node, error) {
 	if id == "" {
-		return nil, fmt.Errorf("id cannot be empty")
+		return nil, &IllegalArgumentError{"id cannot be empty"}
 	}
 	if name == "" {
-		return nil, fmt.Errorf("name cannot be empty")
+		return nil, &IllegalArgumentError{"name cannot be empty"}
 	}
 	if color == "" {
 		color = defaultColor
@@ -66,7 +66,7 @@ func newNode(id, name, color string, nodeType NodeType) (*Node, error) {
 func (n *Node) String() (string, error) {
 	bytes, err := json.Marshal(n)
 	if err != nil {
-		return "", fmt.Errorf("failed to marshal the node [%s]", err)
+		return "", &ParsingError{fmt.Sprintf("failed to marshal the node [%s]", err)}
 	}
 	return string(bytes), nil
 }
@@ -85,7 +85,7 @@ func (n *Node) SetProperty(name, value string) {
 func (n *Node) Parse(bytes []byte) (*Node, error) {
 	err := json.Unmarshal(bytes, n)
 	if err != nil {
-		return nil, fmt.Errorf("failed to parse the node [%s]", err)
+		return nil, &ParsingError{fmt.Sprintf("failed to parse the node [%s]", err)}
 	}
 	n.Traverse()
 	return n, nil
@@ -94,25 +94,25 @@ func (n *Node) Parse(bytes []byte) (*Node, error) {
 // FindNode returns the node with the given id
 func (n *Node) FindNode(id string) (*Node, error) {
 	if id == "" {
-		return nil, fmt.Errorf("id cannot be empty")
+		return nil, &IllegalArgumentError{"id cannot be empty"}
 	}
 	for _, node := range n.Traverse() {
 		if node.Id == id {
 			return node, nil
 		}
 	}
-	return nil, fmt.Errorf("the node with ID %q was not found", id)
+	return nil, &NodeNotFoundError{fmt.Sprintf("the node with ID %q was not found", id)}
 }
 
 // AddNode adds a node to the graph
 func (n *Node) AddNode(parent string, newNode *Node) (*Node, error) {
 	if newNode == nil {
-		return nil, fmt.Errorf("newNode cannot be nil")
+		return nil, &IllegalArgumentError{"newNode cannot be nil"}
 	}
 	// the id must be unique
 	for _, node := range n.Traverse() {
 		if node.Id == newNode.Id {
-			return nil, fmt.Errorf("duplicated ID %q", newNode.Id)
+			return nil, &DuplicatedNodeError{fmt.Sprintf("duplicated ID %q", newNode.Id)}
 		}
 	}
 
@@ -124,7 +124,54 @@ func (n *Node) AddNode(parent string, newNode *Node) (*Node, error) {
 			return n, nil
 		}
 	}
-	return nil, fmt.Errorf("parent %q not found", parent)
+	return nil, &NodeNotFoundError{fmt.Sprintf("parent %q not found", parent)}
+}
+
+// MoveNode moves a node from its parent to a new parent todo to be tested
+func (n *Node) MoveNode(parentId, targetId, newParentId string) (*Node, error) {
+	var parent *Node
+	var target *Node
+	var newParent *Node
+
+	for _, node := range n.Traverse() {
+		if node.Id == parentId {
+			parent = node
+			for _, child := range node.Children {
+				if child.Id == targetId {
+					target = child
+				}
+			}
+		} else if node.Id == newParentId {
+			newParent = node
+		}
+		if parent != nil && target != nil && newParent != nil {
+			break
+		}
+	}
+
+	if parent == nil {
+		return nil, &NodeNotFoundError{fmt.Sprintf("the parent node with ID %q was not found", parentId)}
+	}
+	if target == nil {
+		return nil, &NodeNotFoundError{fmt.Sprintf("the target node with ID %q was not found", targetId)}
+	}
+	if newParent == nil {
+		return nil, &NodeNotFoundError{fmt.Sprintf("the new parent node with ID %q was not found", newParentId)}
+	}
+
+	// add the target to the new parent's children
+	newParent.Children = append(newParent.Children, target)
+
+	// remove the target from the parent's children
+	children := make([]*Node, 0)
+	for _, child := range parent.Children {
+		if child.Id != targetId {
+			children = append(children, child)
+		}
+	}
+	parent.Children = children
+
+	return n, nil
 }
 
 // RemoveNode removes a node from the graph
@@ -148,10 +195,10 @@ func (n *Node) RemoveNode(parent, target string) (*Node, error) {
 		}
 	}
 	if !parentFound {
-		return nil, fmt.Errorf("the parent node with ID %q was not found", parent)
+		return nil, &NodeNotFoundError{fmt.Sprintf("the parent node with ID %q was not found", parent)}
 	}
 	if !targetFound {
-		return nil, fmt.Errorf("the target node with ID %q was not found", target)
+		return nil, &NodeNotFoundError{fmt.Sprintf("the target node with ID %q was not found", target)}
 	}
 	return n, nil
 }
@@ -159,7 +206,7 @@ func (n *Node) RemoveNode(parent, target string) (*Node, error) {
 // UpdateNode updates a graph's node
 func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 	if targetNode == nil {
-		return nil, fmt.Errorf("targetNode cannot be nil")
+		return nil, &IllegalArgumentError{"targetNode cannot be nil"}
 	}
 
 	parentFound := false
@@ -185,7 +232,7 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 						// the id must be unique
 						for _, node := range nodes {
 							if node.Id == newChild.Id {
-								return nil, fmt.Errorf("duplicated ID %q", newChild.Id)
+								return nil, &DuplicatedNodeError{fmt.Sprintf("duplicated ID %q", newChild.Id)}
 							}
 						}
 						child.Children = append(child.Children, newChild)
@@ -195,10 +242,10 @@ func (n *Node) UpdateNode(parent string, targetNode *Node) (*Node, error) {
 		}
 	}
 	if !parentFound {
-		return nil, fmt.Errorf("the parent node with ID %q was not found", parent)
+		return nil, &NodeNotFoundError{fmt.Sprintf("the parent node with ID %q was not found", parent)}
 	}
 	if !targetFound {
-		return nil, fmt.Errorf("the target node with ID %q was not found", targetNode.Id)
+		return nil, &NodeNotFoundError{fmt.Sprintf("the target node with ID %q was not found", targetNode.Id)}
 	}
 	return n, nil
 }

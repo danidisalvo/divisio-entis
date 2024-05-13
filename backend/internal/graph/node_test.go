@@ -219,6 +219,80 @@ func TestNode_AddNode_FailsParentNotFound(t *testing.T) {
 	}
 }
 
+func TestNode_MoveNode(t *testing.T) {
+	//G D B
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	root, err = root.MoveNode("id_D", "id_G", "id_B")
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	found, err := root.FindNode("id_B")
+	if len(found.Children) == 0 {
+		t.Errorf("The node B has no children")
+		return
+	}
+	found, err = root.FindNode("id_D")
+	for _, n := range found.Children {
+		if n.Id == "id_G" {
+			t.Errorf("The node G is a child of node D")
+			return
+		}
+	}
+}
+
+func TestNode_MoveNode_FailsParentNotFound(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	_, err = root.MoveNode("id_Z", "id_G", "id_B")
+	if err == nil {
+		t.Errorf("MoveNode did not return an error")
+		return
+	}
+	if err.Error() != "the parent node with ID \"id_Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the parent node with ID \"id_Z\" was not found\", got %s", err)
+	}
+}
+
+func TestNode_MoveNode_FailsTargetNotFound(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	_, err = root.MoveNode("id_D", "id_Z", "id_B")
+	if err == nil {
+		t.Errorf("MoveNode did not return an error")
+		return
+	}
+	if err.Error() != "the target node with ID \"id_Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the target node with ID \"id_Z\" was not found\", got %s", err)
+	}
+}
+
+func TestNode_MoveNode_FailsNewParentNotFound(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	_, err = root.MoveNode("id_D", "id_G", "id_Z")
+	if err == nil {
+		t.Errorf("MoveNode did not return an error")
+		return
+	}
+	if err.Error() != "the new parent node with ID \"id_Z\" was not found" {
+		t.Errorf("The error message does not match. Expected \"the new parent node with ID \"id_Z\" was not found\", got %s", err)
+	}
+}
+
 func TestNode_RemoveNode_Success(t *testing.T) {
 	root, _, err := provisionNodes()
 	if err != nil {

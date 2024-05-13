@@ -1,1 +1,1 @@
-{"id":"0","name":"ens","type":"lexeme","color":"#dddddd","properties":{},"children":[{"id":"1","name":"xyz","type":"lexeme","color":"#00ff00","properties":{},"children":[{"id":"2","name":"test 123","type":"division","color":"#ff0000","properties":{},"children":[]}]}]}
+{"id":"0","name":"ens","type":"lexeme","color":"#dddddd","properties":{},"children":[{"id":"1","name":"AAA","type":"division","color":"#ffffff","properties":{},"children":[]},{"id":"3","name":"C","type":"lexeme","color":"#ff0000","properties":{},"children":[]}]}
