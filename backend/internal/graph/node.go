@@ -127,8 +127,13 @@ func (n *Node) AddNode(parent string, newNode *Node) (*Node, error) {
 	return nil, &NodeNotFoundError{fmt.Sprintf("parent %q not found", parent)}
 }
 
-// MoveNode moves a node from its parent to a new parent todo to be tested
+// MoveNode moves a node from its parent to a new parent
 func (n *Node) MoveNode(parentId, targetId, newParentId string) (*Node, error) {
+	// trivial case, nothing to be done
+	if parentId == newParentId {
+		return n, nil
+	}
+
 	var parent *Node
 	var target *Node
 	var newParent *Node
@@ -138,6 +143,13 @@ func (n *Node) MoveNode(parentId, targetId, newParentId string) (*Node, error) {
 			parent = node
 			for _, child := range node.Children {
 				if child.Id == targetId {
+					// newParent cannot be a target's child
+					for _, c := range child.Children {
+						if c.Id == newParentId {
+							msg := fmt.Sprintf("the node %q cannot be moved to its child %q", targetId, newParentId)
+							return nil, &IllegalArgumentError{msg}
+						}
+					}
 					target = child
 				}
 			}

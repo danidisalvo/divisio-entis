@@ -220,7 +220,6 @@ func TestNode_AddNode_FailsParentNotFound(t *testing.T) {
 }
 
 func TestNode_MoveNode(t *testing.T) {
-	//G D B
 	root, _, err := provisionNodes()
 	if err != nil {
 		t.Errorf(err.Error())
@@ -242,6 +241,39 @@ func TestNode_MoveNode(t *testing.T) {
 			t.Errorf("The node G is a child of node D")
 			return
 		}
+	}
+}
+
+func TestNode_MoveNode_NoAction(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	actual, err := root.MoveNode("id_D", "id_G", "id_G")
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	if !reflect.DeepEqual(root, actual) {
+		t.Errorf("The tree has changed")
+		return
+	}
+}
+
+func TestNode_MoveNode_FailsMoveToChild(t *testing.T) {
+	root, _, err := provisionNodes()
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
+	_, err = root.MoveNode("id_D", "id_G", "id_H")
+	if err == nil {
+		t.Errorf("MoveNode did not return an error")
+		return
+	}
+	if err.Error() != "the node \"id_G\" cannot be moved to its child \"id_H\"" {
+		t.Errorf("The error message does not match. Expected \"the node \"id_G\" cannot be moved to its child \"id_H\"\", got %s", err)
 	}
 }
 
