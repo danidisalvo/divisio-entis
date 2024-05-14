@@ -1,4 +1,4 @@
-<!--<h1 mat-dialog-title>[{{ data.node.type }}]</h1>-->
+<h1 mat-dialog-title>[{{ data.node.id }}]</h1>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Name</mat-label>
@@ -23,8 +23,14 @@
   <p></p>
   <p></p>
   <p></p>
+  <mat-slide-toggle formControlName="move" (change)="toggleValidation()">Move to node</mat-slide-toggle>
+  <div *ngIf="isChildToggled()" formGroupName="move">
+    <p></p>
+    select
+    <p></p>
+  </div>
   <mat-slide-toggle formControlName="addChild" (change)="toggleValidation()">Add child</mat-slide-toggle>
-  <div *ngIf="hasChild()" formGroupName="child">
+  <div *ngIf="isChildToggled()" formGroupName="child">
     <p></p>
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Name</mat-label>

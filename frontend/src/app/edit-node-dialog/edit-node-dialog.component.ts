@@ -19,6 +19,7 @@ export class EditNodeDialogComponent {
       [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
     ],
     type: [{value: this.data.node.type, disabled: false}],
+    move: [false],
     addChild: [false],
     child: this.fb.group({
       name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(64)]],
@@ -55,19 +56,23 @@ export class EditNodeDialogComponent {
         properties: {},
         children: []
       },
-      addChild: this.hasChild()
+      addChild: this.isChildToggled()
     });
   }
 
-  public hasChild() {
+  public isChildToggled() {
     return this.form.controls['addChild'].value;
   }
 
+  public isMoveToggled() {
+    return this.form.controls['move'].value;
+  }
+
   public toggleValidation() {
-    this.form.controls['child'].controls['name'].setValidators(this.hasChild() ? [Validators.required] : null);
+    this.form.controls['child'].controls['name'].setValidators(this.isChildToggled() ? [Validators.required] : null);
     this.form.controls['child'].controls['name'].updateValueAndValidity();
 
-    this.form.controls['child'].controls['color'].setValidators(this.hasChild() ? [Validators.required] : null);
+    this.form.controls['child'].controls['color'].setValidators(this.isChildToggled() ? [Validators.required] : null);
     this.form.controls['child'].controls['color'].updateValueAndValidity();
   }
 
