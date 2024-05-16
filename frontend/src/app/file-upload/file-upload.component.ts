@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import {environment} from "../../environments/environment";
 
 @Component({
@@ -8,14 +9,17 @@ import {environment} from "../../environments/environment";
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
 
   fileName = '';
   message!: string | null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
   onFileSelected(event: any) {
@@ -28,11 +32,13 @@ export class FileUploadComponent implements OnInit {
 
       this.http.post(`${environment.apiUrl}` + 'upload', formData).subscribe({
         next: () => {
-          this.message = "File uploaded";
+          this.toastrService.success("File uploaded!")
+          // this.message = "File uploaded";
         },
         error: error => {
           console.error(error);
-          this.message = error.status + ' ' + error.statusText;
+          this.toastrService.error(error.status + ' ' + error.statusTex)
+          // this.message = error.status + ' ' + error.statusText;
         }
       });
     }

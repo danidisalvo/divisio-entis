@@ -26,6 +26,7 @@ import {HelpPageComponent} from './help-page/help-page.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {NgModule} from "@angular/core";
+import {ToastNoAnimationModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {NgModule} from "@angular/core";
     MatSlideToggleModule,
     MatToolbarModule,
     NgxMatColorPickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastNoAnimationModule.forRoot(),
   ],
   providers: [
     { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
