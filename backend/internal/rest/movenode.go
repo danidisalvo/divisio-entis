@@ -20,4 +20,5 @@ func (server *HttpServer) moveNode(context *gin.Context) {
 	}
 	server.g.Root = root
 	server.g.Save()
+	server.getGraph(context)
 }

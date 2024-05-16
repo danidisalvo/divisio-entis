@@ -175,6 +175,40 @@ echo "Added node C to node A"
 
 #######################################################################################################################
 
+#######################################################################################################################
+
+echo
+echo
+echo "Adding node D to node C"
+response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
+  --data '{"id":"3","name":"C","color":"#ff0000","type":"lexeme","children":[{"id":"4","name":"D","color":"#ff0000","type":"lexeme","children":null}]}' \
+  -X PUT http://localhost:8080/apis/nodes/1 --output output.json)
+if [ $response != 200 ]; then
+  tearDown 1 "Failed to add node D to node C"
+fi
+
+VAR=$(curl -s http://localhost:8080/apis/graph | jq  -r '.children[0].children[0].name')
+if [ "$VAR" != "C" ]; then
+  tearDown 1 "Failed to add node D to node C"
+fi
+echo "Added node D to node C"
+
+#######################################################################################################################
+
+echo
+echo
+echo "Getting C's target nodes"
+response=$(curl -s -w "%{http_code}" -H 'Content-Type: application/json' \
+  -X GET http://localhost:8080/apis/nodes/3/targets --output output.json)
+
+cat output.json
+
+if [ $response != 200 ]; then
+  tearDown 1 "Failed to get C's target noded"
+fi
+
+#######################################################################################################################
+
 echo
 echo
 echo "Moving node C to the root"

@@ -2,6 +2,9 @@ import {Component, Inject} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms'
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { v4 as uuidv4 } from 'uuid';
+import {environment} from "../../environments/environment";
+import {Node} from "../graph/graph.component";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-edit-node-dialog',
@@ -9,6 +12,9 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./edit-node-dialog.component.css']
 })
 export class EditNodeDialogComponent {
+
+  parent?: string
+  targetNodes?: Array<Node>
 
   form = this.fb.group({
     name: [
@@ -19,7 +25,7 @@ export class EditNodeDialogComponent {
       [Validators.required, Validators.pattern('^#(?:[0-9a-fA-F]{3}){1,2}$')]
     ],
     type: [{value: this.data.node.type, disabled: false}],
-    move: [false],
+    targetNode: [{value: this.data.d.parent === null ? "" : this.data.d.parent.data.id, disabled: false}],
     addChild: [false],
     child: this.fb.group({
       name: ['', [Validators.pattern('(?! ).*[^ ]$'), Validators.maxLength(64)]],
@@ -31,13 +37,25 @@ export class EditNodeDialogComponent {
     })
   });
 
-  constructor(private fb: FormBuilder,
+  constructor(private http: HttpClient,
+              private fb: FormBuilder,
               public dialogRef: MatDialogRef<EditNodeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
+    const url = `${environment.apiUrl}`;
+    // this.parent = data.d.parent.data.id;
+    this.http.get<Node[]>(url + "nodes/" + data.node.id + "/targets").subscribe({
+      next: data => {
+        this.targetNodes = data
+      },
+      error: error => {
+        console.error(error.error.status + ': ' + error.error.message);
+      }
+    });
   }
 
   public onSubmit(): void {
     this.dialogRef.close({
+      targetNode: this.form.controls['targetNode'].value,
       action: 'save',
       d: this.data.d,
       node: {
@@ -62,10 +80,6 @@ export class EditNodeDialogComponent {
 
   public isChildToggled() {
     return this.form.controls['addChild'].value;
-  }
-
-  public isMoveToggled() {
-    return this.form.controls['move'].value;
   }
 
   public toggleValidation() {

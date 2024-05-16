@@ -235,7 +235,20 @@ export class GraphComponent implements OnInit {
                 result.d.children.push(child);
               }
 
-              update(result.d);
+              if (result.parent !== result.d.parent.data.id) {
+                let url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.id + '/' + result.d.data.id + '/' + result.targetNode;
+                this.http.post(url, body, httpOptions).subscribe({
+                  next: data => {
+                    this.message = null;
+                    this.drawTree(data);
+                  },
+                  error: error => {
+                    this.message = error.error.status + ': ' + error.error.message;
+                  }
+                })
+              } else {
+                update(result.d);
+              }
             },
             error: error => {
               console.error(error);

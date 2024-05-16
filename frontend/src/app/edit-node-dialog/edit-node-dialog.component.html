@@ -1,8 +1,14 @@
-<h1 mat-dialog-title>[{{ data.node.id }}]</h1>
 <mat-dialog-content [formGroup]="form">
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Name</mat-label>
     <input matInput formControlName="name">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field appearance="fill">
+    <mat-label>Parent</mat-label>
+    <mat-select formControlName="targetNode">
+      <mat-option *ngFor="let targetNode of targetNodes" [value]="targetNode.id">{{ targetNode.name }}</mat-option>
+    </mat-select>
   </mat-form-field>
   <p></p>
   <mat-form-field appearance="fill">
@@ -23,12 +29,6 @@
   <p></p>
   <p></p>
   <p></p>
-  <mat-slide-toggle formControlName="move" (change)="toggleValidation()">Move to node</mat-slide-toggle>
-  <div *ngIf="isChildToggled()" formGroupName="move">
-    <p></p>
-    select
-    <p></p>
-  </div>
   <mat-slide-toggle formControlName="addChild" (change)="toggleValidation()">Add child</mat-slide-toggle>
   <div *ngIf="isChildToggled()" formGroupName="child">
     <p></p>

@@ -40,6 +40,7 @@ func (server *HttpServer) StartHttpServer() error {
 	router.GET("/apis/graph", server.getGraph)
 	router.GET("/apis/graph/print", server.printGraph)
 	router.PUT("/apis/nodes", server.addChildToRootNode)
+	router.GET("/apis/nodes/:node/targets", server.findTargets)
 	router.PUT("/apis/nodes/:parent", server.updateNode)
 	router.DELETE("/apis/nodes/:parent/:node", server.deleteNode)
 	router.POST("/apis/nodes/:parent/:node/:newParent", server.moveNode)
