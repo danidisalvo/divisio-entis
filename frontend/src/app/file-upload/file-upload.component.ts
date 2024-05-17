@@ -13,7 +13,6 @@ export class FileUploadComponent implements OnInit {
   toastContainer: ToastContainerDirective | undefined;
 
   fileName = '';
-  message!: string | null;
 
   constructor(private http: HttpClient, private toastrService: ToastrService) {
   }
@@ -32,13 +31,10 @@ export class FileUploadComponent implements OnInit {
 
       this.http.post(`${environment.apiUrl}` + 'upload', formData).subscribe({
         next: () => {
-          this.toastrService.success("File uploaded!")
-          // this.message = "File uploaded";
+          this.toastrService.success("File uploaded")
         },
         error: error => {
-          console.error(error);
           this.toastrService.error(error.status + ' ' + error.statusTex)
-          // this.message = error.status + ' ' + error.statusText;
         }
       });
     }

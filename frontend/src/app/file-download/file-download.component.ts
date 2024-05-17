@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 import {Node} from '../graph/graph.component';
 
@@ -11,17 +12,18 @@ import {Node} from '../graph/graph.component';
   styleUrls: ['./file-download.component.css']
 })
 export class FileDownloadComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
 
-  message!: string | null;
   jblobSafeUrl!: SafeUrl;
   tblobSafeUrl!: SafeUrl;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
-    this.message = null;
     const url = `${environment.apiUrl}`;
+    this.toastrService.overlayContainer = this.toastContainer;
     this.http.get<Node>(url + "graph").subscribe({
       next: graph => {
         const jblob = new Blob([JSON.stringify(graph, null, 2)], {type : 'application/json'});
@@ -35,7 +37,7 @@ export class FileDownloadComponent implements OnInit {
         );
       },
       error: error => {
-        this.message = error.status + ' ' + error.statusText;
+        this.toastrService.error(error.status + ' ' + error.statusTex)
       }
     });
   }

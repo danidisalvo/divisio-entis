@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Color} from '@angular-material-components/color-picker';
 import {MatDialog} from "@angular/material/dialog";
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
 import {EditNodeDialogComponent} from "../edit-node-dialog/edit-node-dialog.component";
 import {environment} from '../../environments/environment';
@@ -28,30 +29,33 @@ export interface Node {
 })
 
 export class GraphComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
+
   private dialogWidth = '500px';
   private nodeRadius = 10
   private pathStrokeWidth = 2;
   private strokeColor = '#98989C';
   private transitionDuration = 750;
 
-  message!: string | null;
   hzoom: number
   vzoom: number
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {
+  constructor(private http: HttpClient, public dialog: MatDialog, private toastrService: ToastrService) {
     this.hzoom = 50
     this.vzoom = 50
   }
 
   ngOnInit(): void {
+    this.toastrService.overlayContainer = this.toastContainer;
+
     const url = `${environment.apiUrl}`;
     this.http.get<Node>(url + "graph").subscribe({
       next: data => {
-        this.message = null;
         this.drawTree(data);
       },
       error: error => {
-        this.message = error.error.status + ': ' + error.error.message;
+        this.toastrService.error(error.status + ' ' + error.statusTex)
       }
     });
   }
@@ -69,12 +73,10 @@ export class GraphComponent implements OnInit {
         const url = `${environment.apiUrl}` + 'graph';
         this.http.delete(url).subscribe({
           next: () => {
-            this.message = null;
             this.ngOnInit();
           },
           error: error => {
-            console.error(error);
-            this.message = error.error.status + ': ' + error.error.message;
+            this.toastrService.error(error.status + ' ' + error.statusTex)
           }
         });
       }
@@ -199,8 +201,6 @@ export class GraphComponent implements OnInit {
           };
           this.http.put(url, body, httpOptions).subscribe({
             next: () => {
-              this.message = null;
-
               // amend the current node
               result.d.data.name = result.node.name
               result.d.data.color = result.node.color.toHexString();
@@ -239,11 +239,10 @@ export class GraphComponent implements OnInit {
                 let url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.id + '/' + result.d.data.id + '/' + result.targetNode;
                 this.http.post(url, body, httpOptions).subscribe({
                   next: data => {
-                    this.message = null;
                     this.drawTree(data);
                   },
                   error: error => {
-                    this.message = error.error.status + ': ' + error.error.message;
+                    this.toastrService.error(error.status + ' ' + error.statusTex)
                   }
                 })
               } else {
@@ -251,8 +250,7 @@ export class GraphComponent implements OnInit {
               }
             },
             error: error => {
-              console.error(error);
-              this.message = error.error.status + ': ' + error.error.message;
+              this.toastrService.error(error.status + ' ' + error.statusTex)
             }
           });
         }
@@ -279,7 +277,6 @@ export class GraphComponent implements OnInit {
           const url = `${environment.apiUrl}` + 'nodes/' + result.d.parent.data.id + '/' + result.d.data.id;
           this.http.delete(url).subscribe({
             next: () => {
-              this.message = null;
               const children: any = [];
               d.parent.children.forEach((child: any) => {
                 if (child.id != d.id) {
@@ -290,8 +287,7 @@ export class GraphComponent implements OnInit {
               update(d.parent)
             },
             error: error => {
-              console.error(error);
-              this.message = error.error.status + ': ' + error.error.message;
+              this.toastrService.error(error.status + ' ' + error.statusTex)
             }
           });
         }

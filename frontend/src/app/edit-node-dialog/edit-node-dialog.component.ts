@@ -1,7 +1,8 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms'
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import { v4 as uuidv4 } from 'uuid';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import {environment} from "../../environments/environment";
 import {Node} from "../graph/graph.component";
 import {HttpClient} from "@angular/common/http";
@@ -11,7 +12,9 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: './edit-node-dialog.component.html',
   styleUrls: ['./edit-node-dialog.component.css']
 })
-export class EditNodeDialogComponent {
+export class EditNodeDialogComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
 
   parent?: string
   targetNodes?: Array<Node>
@@ -40,17 +43,21 @@ export class EditNodeDialogComponent {
   constructor(private http: HttpClient,
               private fb: FormBuilder,
               public dialogRef: MatDialogRef<EditNodeDialogComponent>,
+              private toastrService: ToastrService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     const url = `${environment.apiUrl}`;
-    // this.parent = data.d.parent.data.id;
     this.http.get<Node[]>(url + "nodes/" + data.node.id + "/targets").subscribe({
       next: data => {
         this.targetNodes = data
       },
       error: error => {
-        console.error(error.error.status + ': ' + error.error.message);
+        this.toastrService.error(error.status + ' ' + error.statusTex)
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
   public onSubmit(): void {

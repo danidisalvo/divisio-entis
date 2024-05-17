@@ -60,7 +60,10 @@ import {ToastNoAnimationModule} from "ngx-toastr";
     MatToolbarModule,
     NgxMatColorPickerModule,
     ReactiveFormsModule,
-    ToastNoAnimationModule.forRoot(),
+    ToastNoAnimationModule.forRoot({
+      positionClass: 'toast-center-center',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
